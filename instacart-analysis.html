@@ -204,6 +204,95 @@
       align-items: center;
       min-width: 220px;
     }
+    .site-footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 30px 0 36px;
+    }
+    .site-footer-inner {
+      text-align: center;
+    }
+    .site-footer-title {
+      margin: 0 0 10px;
+      color: #f8fafc;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .site-footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .site-footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(30, 41, 59, 0.65);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .site-footer-social-link:hover {
+      transform: translateY(-1px);
+      background: rgba(37, 99, 235, 0.2);
+      border-color: rgba(147, 197, 253, 0.7);
+    }
+    .site-footer-social-link:focus-visible {
+      outline: 2px solid rgba(147, 197, 253, 0.85);
+      outline-offset: 2px;
+    }
+    .site-footer-icon {
+      display: block;
+      max-width: 36px;
+      max-height: 36px;
+      width: auto;
+      height: auto;
+    }
+    .site-footer-icon-github {
+      max-width: 40px;
+      max-height: 40px;
+      transform: translateY(1px);
+    }
+    .site-footer-icon-linkedin {
+      max-height: 29px;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .site-footer a {
+      color: #bfdbfe;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .site-footer a:hover {
+      color: #ffffff;
+    }
+    .site-footer-contact {
+      margin: 0;
+      color: #cbd5e1;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .site-footer-noscript {
+      margin: 10px 0 0;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
     @media (max-width: 860px) {
       .project-header h1 {
         font-size: 2rem;
@@ -239,6 +328,14 @@
         text-align: center;
         padding: 10px 0;
       }
+      .site-footer-contact {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .site-footer-social-link {
+        width: 54px;
+        height: 54px;
+      }
     }
   </style>
 </head>
@@ -252,6 +349,9 @@
           <a href="index.html">Home</a>
           <a href="index.html#skills">Skills</a>
           <a href="index.html#experience">Experience</a>
+          <a href="index.html#education">Education</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </div>
@@ -330,7 +430,55 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-inner">
+      <p class="site-footer-title">Connect With Michael Brewer</p>
+      <div class="site-footer-links" aria-label="Professional profiles">
+        <a class="site-footer-social-link" href="https://github.com/michael-brewer-ds" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <img class="site-footer-icon site-footer-icon-github" src="GitHub_Invertocat_White_Clearspace.png" alt="" aria-hidden="true" />
+          <span class="visually-hidden">GitHub</span>
+        </a>
+        <a class="site-footer-social-link" href="https://www.linkedin.com/in/wordbrewer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+          <img class="site-footer-icon site-footer-icon-linkedin" src="InBug-White.png" alt="" aria-hidden="true" />
+          <span class="visually-hidden">LinkedIn</span>
+        </a>
+      </div>
+      <p class="site-footer-contact">
+        <span>Email: <a id="footer-email" href="#">Loading...</a></span>
+        <span>Phone: <a id="footer-phone" href="#">Loading...</a></span>
+      </p>
+      <noscript>
+        <p class="site-footer-noscript">Email: michael [at] wordbrewer [dot] com | Phone: (nine seven one) two six eight - eight four seven nine</p>
+      </noscript>
+    </div>
+  </footer>
+
   <script>
+    const decodeFooterValue = value => {
+      try {
+        return atob(value);
+      } catch {
+        return '';
+      }
+    };
+
+    const emailValue = decodeFooterValue('bWljaGFlbEB3b3JkYnJld2VyLmNvbQ==');
+    const phoneValue = decodeFooterValue('KDk3MSkgMjY4LTg0Nzk=');
+    const mailtoPrefix = decodeFooterValue('bWFpbHRvOg==');
+    const telPrefix = decodeFooterValue('dGVsOg==');
+    const footerEmail = document.getElementById('footer-email');
+    const footerPhone = document.getElementById('footer-phone');
+
+    if (footerEmail && emailValue) {
+      footerEmail.textContent = emailValue;
+      footerEmail.href = `${mailtoPrefix}${emailValue}`;
+    }
+    if (footerPhone && phoneValue) {
+      footerPhone.textContent = phoneValue;
+      footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
+    }
+
     const menuToggle = document.querySelector('.menu-toggle');
     const pageNav = document.querySelector('nav');
     menuToggle?.addEventListener('click', () => {
