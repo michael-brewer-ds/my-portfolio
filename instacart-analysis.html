@@ -144,39 +144,13 @@
       margin: 32px 0;
       border: 1px solid rgba(148, 163, 184, 0.25);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      cursor: zoom-in;
       transition: transform 0.25s ease;
     }
     .screenshot:hover {
       transform: scale(1.01);
     }
-    .image-zoom-overlay {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(15, 23, 42, 0.92);
-      z-index: 2000;
-      overflow: auto;
-    }
-    .image-zoom-overlay.open {
-      display: flex;
-    }
-    .image-zoom-overlay img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 18px;
-      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-      cursor: zoom-out;
-    }
-    .image-zoom-caption {
-      margin-top: 18px;
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      text-align: center;
-      max-width: 90vw;
+    .image-link {
+      display: block;
     }
     .tech-stack {
       display: flex;
@@ -288,19 +262,27 @@
         <h2 style="margin-top: 40px;">Key Findings</h2>
         
         <h3 style="color: #bfdbfe; font-size: 1.2rem;">Shopping Patterns</h3>
-        <img src="Instacart4.png" alt="Time of Day People Shop for Groceries" class="screenshot">
+        <a href="image-viewer.html?img=Instacart4.png&from=instacart-analysis.html" class="image-link">
+          <img src="Instacart4.png" alt="Time of Day People Shop for Groceries" class="screenshot">
+        </a>
         <p>Customer activity follows a strong daily rhythm, with peak ordering concentrated between 8 AM and 6 PM. The highest volume occurs around 10 AM, making that window critical for staffing and fulfillment planning. Orders drop sharply after 5 PM and remain minimal overnight.</p>
 
         <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Basket Composition</h3>
-        <img src="Instacart3.png" alt="Items Per Order" class="screenshot">
+        <a href="image-viewer.html?img=Instacart3.png&from=instacart-analysis.html" class="image-link">
+          <img src="Instacart3.png" alt="Items Per Order" class="screenshot">
+        </a>
         <p>Most orders contain 5-6 items, with the majority falling between 1-20 items. This insight is valuable for merchandising strategies, recommendation engine design, and user-interface decisions around browsing and cart building.</p>
 
         <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Product Popularity</h3>
-        <img src="Instacart1.png" alt="Top 20 Popular Products" class="screenshot">
+        <a href="image-viewer.html?img=Instacart1.png&from=instacart-analysis.html" class="image-link">
+          <img src="Instacart1.png" alt="Top 20 Popular Products" class="screenshot">
+        </a>
         <p>The most frequently purchased items are overwhelmingly produce, with milk as a notable exception. This pattern points to strong recurring demand for fresh, fast-moving staple items and everyday household replenishment.</p>
 
         <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Reorder Behavior</h3>
-        <img src="Instacart2.png" alt="Top 20 Most Reordered Items" class="screenshot">
+        <a href="image-viewer.html?img=Instacart2.png&from=instacart-analysis.html" class="image-link">
+          <img src="Instacart2.png" alt="Top 20 Most Reordered Items" class="screenshot">
+        </a>
         <p>Bananas, bagged organic bananas, and organic strawberries dominate the reorder list. Perishable staples and produce are replenished far more frequently than occasional or long-lasting goods. This signal is valuable for recommendation systems, replenishment prompts, and inventory planning around habitual purchases.</p>
 
         <h2 style="margin-top: 40px;">Methodology</h2>
@@ -336,12 +318,6 @@
       </div>
     </section>
   </main>
-  <div class="image-zoom-overlay" role="dialog" aria-modal="true" tabindex="-1">
-    <div>
-      <img src="" alt="Expanded screenshot view" />
-      <p class="image-zoom-caption">Tap or click anywhere to close and return to the project details.</p>
-    </div>
-  </div>
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const pageNav = document.querySelector('nav');
@@ -352,25 +328,6 @@
       link.addEventListener('click', () => {
         pageNav?.classList.remove('open');
       });
-    });
-
-    const screenshotImages = document.querySelectorAll('.screenshot');
-    const zoomOverlay = document.querySelector('.image-zoom-overlay');
-    const zoomedImage = zoomOverlay?.querySelector('img');
-
-    screenshotImages.forEach(img => {
-      img.addEventListener('click', () => {
-        if (!zoomOverlay || !zoomedImage) return;
-        zoomedImage.src = img.src;
-        zoomedImage.alt = img.alt;
-        zoomOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    zoomOverlay?.addEventListener('click', () => {
-      zoomOverlay.classList.remove('open');
-      document.body.style.overflow = '';
     });
   </script>
 </body>

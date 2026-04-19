@@ -149,39 +149,13 @@
       margin: 32px 0;
       border: 1px solid rgba(148, 163, 184, 0.25);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      cursor: zoom-in;
       transition: transform 0.25s ease;
     }
     .screenshot:hover {
       transform: scale(1.01);
     }
-    .image-zoom-overlay {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(15, 23, 42, 0.92);
-      z-index: 2000;
-      overflow: auto;
-    }
-    .image-zoom-overlay.open {
-      display: flex;
-    }
-    .image-zoom-overlay img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 18px;
-      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-      cursor: zoom-out;
-    }
-    .image-zoom-caption {
-      margin-top: 18px;
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      text-align: center;
-      max-width: 90vw;
+    .image-link {
+      display: block;
     }
     .highlight-box {
       background: rgba(59, 130, 246, 0.1);
@@ -303,7 +277,9 @@
         <h2 style="margin-top: 40px;">Key Findings</h2>
 
         <h3>Revenue Comparison</h3>
-        <img src="megaline1.png" alt="Average Total Revenue Made Per Month" class="screenshot">
+        <a href="image-viewer.html?img=megaline1.png&from=megaline-analysis.html" class="image-link">
+          <img src="megaline1.png" alt="Average Total Revenue Made Per Month" class="screenshot">
+        </a>
         <p>Ultimate generates consistently higher and more stable revenue than Surf. While Surf revenue depends heavily on overage charges (especially for data usage), Ultimate provides predictable monthly revenue through fixed plan pricing.</p>
         
         <div class="highlight-box">
@@ -311,11 +287,15 @@
         </div>
 
         <h3>Data Usage Patterns</h3>
-        <img src="megaline2.png" alt="Average Total Megabytes Per Month" class="screenshot">
+        <a href="image-viewer.html?img=megaline2.png&from=megaline-analysis.html" class="image-link">
+          <img src="megaline2.png" alt="Average Total Megabytes Per Month" class="screenshot">
+        </a>
         <p>After June, Surf users consistently exceed their plan limits, particularly for data usage, creating revenue variability. Ultimate users demonstrate more consistent usage patterns and rarely exceed their allotted data, resulting in stable, predictable revenue and lower strain on network resources.</p>
 
         <h3>Statistical Validation</h3>
-        <img src="megaline3.png" alt="Statistical Hypothesis Testing" class="screenshot">
+        <a href="image-viewer.html?img=megaline3.png&from=megaline-analysis.html" class="image-link">
+          <img src="megaline3.png" alt="Statistical Hypothesis Testing" class="screenshot">
+        </a>
         <p>An independent samples t-test (α = 0.05) revealed statistically significant differences in average revenue between plans, with a p-value of 2.86e-08. This provides strong evidence to support prioritizing Ultimate in marketing decisions.</p>
 
         <h2 style="margin-top: 40px;">Business Recommendations</h2>
@@ -370,12 +350,6 @@
       </div>
     </section>
   </main>
-  <div class="image-zoom-overlay" role="dialog" aria-modal="true" tabindex="-1">
-    <div>
-      <img src="" alt="Expanded screenshot view" />
-      <p class="image-zoom-caption">Tap or click anywhere to close and return to the project details.</p>
-    </div>
-  </div>
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const pageNav = document.querySelector('nav');
@@ -386,25 +360,6 @@
       link.addEventListener('click', () => {
         pageNav?.classList.remove('open');
       });
-    });
-
-    const screenshotImages = document.querySelectorAll('.screenshot');
-    const zoomOverlay = document.querySelector('.image-zoom-overlay');
-    const zoomedImage = zoomOverlay?.querySelector('img');
-
-    screenshotImages.forEach(img => {
-      img.addEventListener('click', () => {
-        if (!zoomOverlay || !zoomedImage) return;
-        zoomedImage.src = img.src;
-        zoomedImage.alt = img.alt;
-        zoomOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    zoomOverlay?.addEventListener('click', () => {
-      zoomOverlay.classList.remove('open');
-      document.body.style.overflow = '';
     });
   </script>
 </body>
