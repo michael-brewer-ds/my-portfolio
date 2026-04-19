@@ -28,10 +28,15 @@
       overflow-x: hidden;
     }
     header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
       background: rgba(31, 41, 55, 0.94);
       color: #fff;
-      padding: 20px 0;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 18px 0;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(16px);
     }
     .container {
       width: min(1100px, 90%);
@@ -44,6 +49,25 @@
       gap: 20px;
       justify-content: flex-end;
       flex-wrap: wrap;
+      align-items: center;
+    }
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      cursor: pointer;
+      font-size: 1.35rem;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
     }
     nav a {
       color: #fff;
@@ -201,14 +225,43 @@
       .project-card {
         padding: 28px;
       }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.35s ease;
+        background-color: rgba(15, 23, 42, 0.95);
+        border-radius: 0 0 18px 18px;
+        z-index: 1001;
+      }
+      nav.open {
+        max-height: 520px;
+        padding: 18px 0 22px;
+      }
+      nav a {
+        width: min(260px, 100%);
+        text-align: center;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative;">
         <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav>
           <a href="index.html#about">About</a>
           <a href="index.html#skills">Skills</a>
@@ -290,6 +343,17 @@
     </div>
   </div>
   <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const pageNav = document.querySelector('nav');
+    menuToggle?.addEventListener('click', () => {
+      pageNav?.classList.toggle('open');
+    });
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        pageNav?.classList.remove('open');
+      });
+    });
+
     const screenshotImages = document.querySelectorAll('.screenshot');
     const zoomOverlay = document.querySelector('.image-zoom-overlay');
     const zoomedImage = zoomOverlay?.querySelector('img');
