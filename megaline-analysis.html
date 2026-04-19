@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Megaline Statistical Data Analysis | Michael Brewer</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #222;
+      background-color: #0f172a;
+      background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('background4.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    header {
+      background: rgba(31, 41, 55, 0.94);
+      color: #fff;
+      padding: 20px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      margin-right: auto;
+    }
+    .back-link:hover {
+      color: #fff;
+    }
+    main {
+      padding: 60px 0;
+    }
+    section {
+      padding: 60px 0;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+    .project-header {
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 22%),
+                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 18%),
+                  linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: #fff;
+      padding: 80px 0;
+    }
+    .project-header h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      color: #f8fafc;
+    }
+    .project-header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      color: #dbeafe;
+      margin: 0;
+    }
+    .project-card {
+      background: rgba(30, 41, 59, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+    }
+    .project-card h2 {
+      color: #f1f5f9;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      margin-top: 0;
+    }
+    .project-card h3 {
+      color: #bfdbfe;
+      font-size: 1.3rem;
+      margin-top: 32px;
+    }
+    .project-card p,
+    .project-card li {
+      color: #f1f5f9;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .project-card ul {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+    .project-card li {
+      margin-bottom: 12px;
+    }
+    .screenshot {
+      width: 100%;
+      border-radius: 12px;
+      margin: 32px 0;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
+    .screenshot:hover {
+      transform: scale(1.01);
+    }
+    .image-zoom-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.92);
+      z-index: 2000;
+      overflow: auto;
+    }
+    .image-zoom-overlay.open {
+      display: flex;
+    }
+    .image-zoom-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 18px;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+      cursor: zoom-out;
+    }
+    .image-zoom-caption {
+      margin-top: 18px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 90vw;
+    }
+    .highlight-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 4px solid #2563eb;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .tech-tag {
+      background: rgba(148, 163, 184, 0.2);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e2e8f0;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .github-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: #2563eb;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: background 0.3s ease;
+    }
+    .github-button:hover {
+      background: #1d4ed8;
+    }
+    .bottom-cta {
+      text-align: center;
+      padding: 24px 0 60px;
+    }
+    .bottom-cta a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 220px;
+    }
+    @media (max-width: 860px) {
+      .project-header h1 {
+        font-size: 2rem;
+      }
+      .project-card {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <nav>
+          <a href="index.html#about">About</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#experience">Experience</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="project-header">
+    <div class="container">
+      <h1>Megaline Statistical Data Analysis</h1>
+      <p>Determining which prepaid plan generates more revenue through exploratory analysis and statistical hypothesis testing.</p>
+    </div>
+  </section>
+
+  <main>
+    <section>
+      <div class="container project-card">
+        <h2>Business Problem</h2>
+        <p>Megaline, a telecom operator offering two prepaid plans (Surf and Ultimate), needed to determine which plan generates more revenue to allocate its advertising budget more effectively. Using a sample of 500 customers, this analysis examines call, message, and internet usage throughout 2018 and compares plan performance.</p>
+
+        <h2 style="margin-top: 40px;">Key Findings</h2>
+
+        <h3>Revenue Comparison</h3>
+        <img src="megaline1.png" alt="Average Total Revenue Made Per Month" class="screenshot">
+        <p>Ultimate generates consistently higher and more stable revenue than Surf. While Surf revenue depends heavily on overage charges (especially for data usage), Ultimate provides predictable monthly revenue through fixed plan pricing.</p>
+        
+        <div class="highlight-box">
+          <p><strong>Plan with higher average revenue:</strong> Ultimate</p>
+        </div>
+
+        <h3>Data Usage Patterns</h3>
+        <img src="megaline2.png" alt="Average Total Megabytes Per Month" class="screenshot">
+        <p>After June, Surf users consistently exceed their plan limits, particularly for data usage, creating revenue variability. Ultimate users demonstrate more consistent usage patterns and rarely exceed their allotted data, resulting in stable, predictable revenue and lower strain on network resources.</p>
+
+        <h3>Statistical Validation</h3>
+        <img src="megaline3.png" alt="Statistical Hypothesis Testing" class="screenshot">
+        <p>An independent samples t-test (α = 0.05) revealed statistically significant differences in average revenue between plans, with a p-value of 2.86e-08. This provides strong evidence to support prioritizing Ultimate in marketing decisions.</p>
+
+        <h2 style="margin-top: 40px;">Business Recommendations</h2>
+        <ul>
+          <li><strong>Allocate more advertising budget to Ultimate</strong> — the higher-value, more predictable plan</li>
+          <li><strong>Target high-usage Surf customers for upgrades</strong> — especially those with large data overages</li>
+          <li><strong>Reevaluate plan structure</strong> — consider a mid-tier plan or higher data allowances to better capture heavy users</li>
+          <li><strong>Geographic targeting</strong> — statistical analysis identified significant regional differences (NY-NJ area) suggesting the need for localized marketing strategies</li>
+          <li><strong>Explore pricing adjustments</strong> — overage fees could be revisited to improve revenue predictability while remaining competitive</li>
+        </ul>
+
+        <h2 style="margin-top: 40px;">Analytical Approach</h2>
+        <ul>
+          <li>Data cleaning and preprocessing to ensure data quality</li>
+          <li>Monthly aggregation of customer usage patterns</li>
+          <li>Exploratory data analysis of calls, messages, data consumption, and revenue</li>
+          <li>Comparison of customer behavior across Surf and Ultimate plans</li>
+          <li>Statistical hypothesis testing using independent samples t-test</li>
+          <li>Regional analysis to identify geographic revenue variations</li>
+        </ul>
+
+        <h2 style="margin-top: 40px;">Key Insights</h2>
+        <ul>
+          <li>Ultimate is the stronger revenue-generating plan and should be prioritized in marketing and pricing strategy</li>
+          <li>Surf users more frequently exceed plan limits, leading to higher revenue variability driven by overage charges</li>
+          <li>High-usage Surf customers represent a clear opportunity for conversion to higher-value plans</li>
+          <li>Ultimate users benefit from predictable costs, while Surf appeals to lower-usage customers seeking lower base prices</li>
+          <li>Regional differences suggest the need for geographically targeted strategies rather than one-size-fits-all approaches</li>
+        </ul>
+
+        <h2 style="margin-top: 40px;">Tools & Technologies</h2>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">SciPy</span>
+          <span class="tech-tag">Matplotlib</span>
+          <span class="tech-tag">Statistical Analysis</span>
+          <span class="tech-tag">Hypothesis Testing</span>
+          <span class="tech-tag">Data Aggregation</span>
+          <span class="tech-tag">Business Analytics</span>
+        </div>
+
+        <h2 style="margin-top: 40px;">View Full Project</h2>
+        <p>Explore the complete notebook with all code, detailed statistical testing, visualizations, and business recommendations:</p>
+        <a href="https://github.com/michael-brewer-ds/megaline_analysis" target="_blank" class="github-button">View on GitHub →</a>
+      </div>
+    </section>
+    <section class="bottom-cta">
+      <div class="container">
+        <a href="index.html" class="github-button">← Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+  <div class="image-zoom-overlay" role="dialog" aria-modal="true" tabindex="-1">
+    <div>
+      <img src="" alt="Expanded screenshot view" />
+      <p class="image-zoom-caption">Tap or click anywhere to close and return to the project details.</p>
+    </div>
+  </div>
+  <script>
+    const screenshotImages = document.querySelectorAll('.screenshot');
+    const zoomOverlay = document.querySelector('.image-zoom-overlay');
+    const zoomedImage = zoomOverlay?.querySelector('img');
+
+    screenshotImages.forEach(img => {
+      img.addEventListener('click', () => {
+        if (!zoomOverlay || !zoomedImage) return;
+        zoomedImage.src = img.src;
+        zoomedImage.alt = img.alt;
+        zoomOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    zoomOverlay?.addEventListener('click', () => {
+      zoomOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  </script>
+</body>
+</html>
