@@ -71,12 +71,21 @@
     }
     .hero {
       position: relative;
-      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 22%),
-                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.18), transparent 18%),
-                  linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(17, 24, 39, 0.1) 52%, rgba(30, 41, 59, 0.1) 100%),
+                        radial-gradient(circle at top left, rgba(96, 165, 250, 0.1), transparent 28%),
+                        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 24%),
+                        url('background8.png');
+      background-color: #0f172a;
+      background-position: center, top left, bottom right, center;
+      background-repeat: no-repeat;
+      background-size: cover, auto, auto, cover;
       color: #fff;
       padding: 100px 0 80px;
       overflow: hidden;
+      border-top: 4px solid rgb(226, 232, 240);
+      border-bottom: 4px solid rgb(226, 232, 240);
+      box-shadow: inset 0 90px 120px rgba(15, 23, 42, 0.2),
+                  inset 0 -90px 120px rgba(15, 23, 42, 0.42);
     }
     .hero::before,
     .hero::after {
@@ -89,16 +98,16 @@
     .hero::before {
       width: 260px;
       height: 260px;
-      background: rgba(96, 165, 250, 0.4);
-      top: 20px;
-      left: -80px;
+      background: rgba(96, 165, 250, 0.22);
+      top: 12px;
+      left: -70px;
     }
     .hero::after {
       width: 320px;
       height: 320px;
-      background: rgba(56, 189, 248, 0.3);
-      bottom: -90px;
-      right: -100px;
+      background: rgba(56, 189, 248, 0.2);
+      bottom: -80px;
+      right: -90px;
     }
     .hero-grid {
       display: grid;
@@ -107,34 +116,48 @@
       grid-template-columns: minmax(0, 1.4fr) minmax(240px, 360px);
       position: relative;
       z-index: 1;
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);
+      border: 1px solid rgba(226, 232, 240, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 20px 48px rgba(2, 6, 23, 0.28);
     }
     .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      align-self: stretch;
       text-align: left;
       max-width: 720px;
     }
     .hero h2 {
       font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-top: 0;
       margin-bottom: 12px;
       line-height: 1.05;
       max-width: 620px;
       color: #f8fafc;
-      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+      text-shadow: 0 10px 30px rgba(2, 6, 23, 0.55);
     }
     .hero-title-subtitle {
       font-size: clamp(1.35rem, 2.2vw, 1.7rem);
-      margin: 0 0 24px;
-      color: #bfdbfe;
+      margin: 0 0 34px;
+      color: #dbeafe;
       max-width: 620px;
       letter-spacing: 0.01em;
       line-height: 1.35;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      text-shadow: 0 6px 20px rgba(2, 6, 23, 0.5);
     }
     .hero p {
       max-width: 620px;
       margin: 0;
       font-size: 1.08rem;
       line-height: 1.85;
-      color: #dbeafe;
+      color: #e2e8f0;
+      text-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
     }
     .hero-portrait {
       display: grid;
@@ -377,8 +400,13 @@
       font-weight: 700;
     }
     .site-footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.35);
-      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid #0b1733;
+      background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.88) 100%),
+                        url('background9.png');
+      background-color: #0f172a;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       padding: 30px 0 36px;
     }
     .site-footer-inner {
@@ -470,6 +498,11 @@
       .resume-grid {
         grid-template-columns: 1fr;
       }
+      .hero-grid {
+        padding: 24px;
+        border-radius: 24px;
+        gap: 24px;
+      }
       .hero {
         padding-top: 70px;
       }
@@ -554,9 +587,9 @@
       <div class="container hero-grid">
         <div class="hero-text">
           <h2>Aspiring Data Scientist</h2>
-          <br />
+          <br>
           <p class="hero-title-subtitle">Focused on human-centered insights</p>
-          <br />
+          <br>
           <p>Currently completing a 9-month AI & Machine Learning program at TripleTen while building hands-on experience in Python, data cleaning, exploratory data analysis, statistical analysis, and model development.</p>
         </div>
         <div class="hero-portrait">
@@ -705,7 +738,7 @@
       </div>
       <p class="site-footer-contact">
         <span>Email: <a id="footer-email" href="#">Loading...</a></span>
-        <span>Phone: <a id="footer-phone" href="#">Loading...</a></span>
+        <span>Cell: <a id="footer-phone" href="#">Loading...</a></span>
       </p>
       <noscript>
         <p class="site-footer-noscript">Email: michael [at] wordbrewer [dot] com | Phone: (nine seven one) two six eight - eight four seven nine</p>
