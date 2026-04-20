@@ -63,6 +63,23 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(16px);
     }
+    .header-progress-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: rgba(148, 163, 184, 0.35);
+      overflow: hidden;
+    }
+    .header-progress-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8 0%, #2563eb 100%);
+      transform-origin: left center;
+      transform: scaleX(0);
+      will-change: transform;
+    }
     .container {
       width: min(1100px, 90%);
       margin: 0 auto;
@@ -458,6 +475,9 @@
         </nav>
       </div>
     </div>
+    <div class="header-progress-track" aria-hidden="true">
+      <div class="header-progress-bar" id="scroll-progress-bar"></div>
+    </div>
   </header>
   <body class="parallax-enabled">
   <section class="project-header">
@@ -594,6 +614,7 @@
     const telPrefix = decodeFooterValue('dGVsOg==');
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
+    const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -614,6 +635,28 @@
         pageNav?.classList.remove('open');
       });
     });
+
+    let isProgressTicking = false;
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollRange > 0 ? Math.min(Math.max(scrollTop / scrollRange, 0), 1) : 0;
+      if (scrollProgressBar) {
+        scrollProgressBar.style.transform = `scaleX(${progress})`;
+      }
+      isProgressTicking = false;
+    };
+
+    const requestProgressUpdate = () => {
+      if (!isProgressTicking) {
+        isProgressTicking = true;
+        window.requestAnimationFrame(updateScrollProgress);
+      }
+    };
+
+    window.addEventListener('scroll', requestProgressUpdate, { passive: true });
+    window.addEventListener('resize', requestProgressUpdate);
+    requestProgressUpdate();
   </script>
 </body>
 </html>
