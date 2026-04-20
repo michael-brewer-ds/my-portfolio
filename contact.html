@@ -405,7 +405,7 @@
         <form action="#" method="POST">
           <input type="hidden" name="_subject" value="New portfolio contact form submission" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://michael-brewer-ds.github.io/" />
+          <input type="hidden" name="_next" value="contact-success.html" />
           <input type="text" name="_honey" class="hidden-trap" tabindex="-1" autocomplete="off" />
 
           <div class="field-grid">
@@ -501,6 +501,7 @@
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
     const contactForm = document.querySelector('form[action="#"]');
+    const nextRedirectField = contactForm?.querySelector('input[name="_next"]');
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -512,6 +513,9 @@
     }
     if (contactForm && formsubmitBase && emailValue) {
       contactForm.action = `${formsubmitBase}${emailValue}`;
+    }
+    if (nextRedirectField) {
+      nextRedirectField.value = new URL('contact-success.html', window.location.href).href;
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
