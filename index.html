@@ -177,6 +177,46 @@
       color: #e2e8f0;
       text-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
     }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.35);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hero-action:hover,
+    .hero-action:focus-visible {
+      transform: translateY(-2px);
+    }
+    .hero-action-primary {
+      background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+      color: #eff6ff;
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.3);
+    }
+    .hero-action-primary:hover,
+    .hero-action-primary:focus-visible {
+      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.36);
+    }
+    .hero-action-secondary {
+      background: rgba(15, 23, 42, 0.4);
+      color: #dbeafe;
+    }
+    .hero-action-secondary:hover,
+    .hero-action-secondary:focus-visible {
+      background: rgba(30, 41, 59, 0.68);
+      border-color: rgba(191, 219, 254, 0.55);
+    }
     .hero-portrait {
       display: grid;
       justify-items: center;
@@ -316,6 +356,16 @@
     #education .education-meta {
       color: #cbd5e1;
     }
+    #testimonials {
+      background-image:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.86) 100%),
+        url('background7.png');
+      background-color: #111827;
+    }
+    #testimonials h2,
+    #testimonials p {
+      color: #f8fafc;
+    }
     #projects {
       background-image:
         linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(17, 24, 39, 0.1) 52%, rgba(30, 41, 59, 0.1) 100%),
@@ -443,6 +493,107 @@
       text-decoration: none;
       font-weight: 700;
     }
+    .testimonials-intro {
+      margin: 0;
+      max-width: 720px;
+      color: #cbd5e1;
+    }
+    .testimonials-carousel {
+      margin-top: 12px;
+      display: grid;
+      gap: 20px;
+    }
+    .testimonial-stage {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+    .testimonial-slide {
+      margin: 0;
+      display: none;
+    }
+    .testimonial-slide[hidden] {
+      display: none !important;
+    }
+    .testimonial-slide.active {
+      display: block;
+      animation: testimonialFadeIn 0.4s ease;
+    }
+    @keyframes testimonialFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .testimonial-card {
+      display: block;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(248, 250, 252, 0.07);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.22);
+    }
+    .testimonial-stage .testimonial-slide {
+      display: none;
+    }
+    .testimonial-stage .testimonial-slide.active {
+      display: block;
+    }
+    .testimonial-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+    .testimonial-image-link {
+      display: block;
+      text-decoration: none;
+      cursor: zoom-in;
+    }
+    .testimonial-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .testimonial-nav {
+      border: 1px solid rgba(147, 197, 253, 0.45);
+      background: rgba(15, 23, 42, 0.55);
+      color: #e2e8f0;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .testimonial-nav:hover,
+    .testimonial-nav:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(147, 197, 253, 0.75);
+    }
+    .testimonial-dots {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .testimonial-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(148, 163, 184, 0.5);
+      cursor: pointer;
+      padding: 0;
+    }
+    .testimonial-dot.active {
+      background: #93c5fd;
+      box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.25);
+    }
     .site-footer {
       border-top: 1px solid #0b1733;
       background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.88) 100%),
@@ -569,8 +720,20 @@
       .hero-text {
         text-align: center;
       }
+      .hero-actions {
+        justify-content: center;
+      }
       .hero-portrait {
         justify-items: center;
+      }
+      .testimonial-card {
+        padding: 12px;
+      }
+      .testimonial-controls {
+        gap: 12px;
+      }
+      .testimonial-nav {
+        padding: 9px 16px;
       }
       .container {
         padding-inline-start: 12px;
@@ -651,6 +814,10 @@
           <p class="hero-title-subtitle">Focused on human-centered insights</p>
           <br>
           <p>Currently completing a 9-month AI & Machine Learning program at TripleTen while building hands-on experience in Python, data cleaning, exploratory data analysis, statistical analysis, and model development.</p>
+          <div class="hero-actions">
+            <a class="hero-action hero-action-primary" href="resume.pdf" download>Download Resume</a>
+            <a class="hero-action hero-action-secondary" href="contact.html">Contact Michael</a>
+          </div>
         </div>
         <div class="hero-portrait">
           <img src="headshot.png" alt="Michael Brewer headshot" />
@@ -755,6 +922,41 @@
         <div class="education-item">
           <h4>Arizona State University — Bachelor's Degree, Journalism and Mass Communication</h4>
           <p class="education-meta">2011 - 2013 · Walter Cronkite School of Journalism and Mass Communication</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container resume-card">
+        <h2>Testimonials</h2>
+        <p class="testimonials-intro">A few endorsements from collaborators who have worked directly with Michael.</p>
+        <div class="testimonials-carousel" id="testimonials-carousel">
+          <div class="testimonial-stage">
+            <figure class="testimonial-slide testimonial-card active">
+              <a href="image-viewer.html?img=t1.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 1 in full size viewer">
+                <img src="t1.png" alt="Testimonial from Anne-Marie Pritchett, Director of Communications at Colossal Management, LLC" loading="lazy" />
+              </a>
+            </figure>
+            <figure class="testimonial-slide testimonial-card" hidden>
+              <a href="image-viewer.html?img=t2.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 2 in full size viewer">
+                <img src="t2.png" alt="Testimonial from Melody Montoya, Marketing Automation Associate Manager at Beckman Coulter Life Sciences" loading="lazy" />
+              </a>
+            </figure>
+            <figure class="testimonial-slide testimonial-card" hidden>
+              <a href="image-viewer.html?img=t3.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 3 in full size viewer">
+                <img src="t3.png" alt="Testimonial from Shauna Vert, Principal Consultant and Owner of Shauna Vert Communications" loading="lazy" />
+              </a>
+            </figure>
+          </div>
+          <div class="testimonial-controls" aria-label="Testimonial navigation">
+            <button class="testimonial-nav" type="button" data-direction="prev" aria-label="Show previous testimonial">Previous</button>
+            <div class="testimonial-dots">
+              <button class="testimonial-dot active" type="button" data-slide-index="0" aria-label="Show testimonial 1" aria-current="true"></button>
+              <button class="testimonial-dot" type="button" data-slide-index="1" aria-label="Show testimonial 2" aria-current="false"></button>
+              <button class="testimonial-dot" type="button" data-slide-index="2" aria-label="Show testimonial 3" aria-current="false"></button>
+            </div>
+            <button class="testimonial-nav" type="button" data-direction="next" aria-label="Show next testimonial">Next</button>
+          </div>
         </div>
       </div>
     </section>
@@ -870,6 +1072,86 @@
         pageNav?.classList.remove('open');
       });
     });
+
+    const testimonialCarousel = document.getElementById('testimonials-carousel');
+    if (testimonialCarousel) {
+      const testimonialSlides = Array.from(testimonialCarousel.querySelectorAll('.testimonial-slide'));
+      const testimonialDots = Array.from(testimonialCarousel.querySelectorAll('.testimonial-dot'));
+      const testimonialPrevButton = testimonialCarousel.querySelector('[data-direction="prev"]');
+      const testimonialNextButton = testimonialCarousel.querySelector('[data-direction="next"]');
+      const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let activeTestimonialIndex = 0;
+      let testimonialAutoTimer = null;
+
+      const updateTestimonial = index => {
+        if (!testimonialSlides.length) {
+          return;
+        }
+        activeTestimonialIndex = (index + testimonialSlides.length) % testimonialSlides.length;
+
+        testimonialSlides.forEach((slide, slideIndex) => {
+          const isActive = slideIndex === activeTestimonialIndex;
+          slide.classList.toggle('active', isActive);
+          slide.hidden = !isActive;
+        });
+
+        testimonialDots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === activeTestimonialIndex;
+          dot.classList.toggle('active', isActive);
+          dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+      };
+
+      const stopTestimonialAutoPlay = () => {
+        if (testimonialAutoTimer) {
+          window.clearInterval(testimonialAutoTimer);
+          testimonialAutoTimer = null;
+        }
+      };
+
+      const startTestimonialAutoPlay = () => {
+        if (shouldReduceMotion || testimonialSlides.length < 2) {
+          return;
+        }
+        stopTestimonialAutoPlay();
+        testimonialAutoTimer = window.setInterval(() => {
+          updateTestimonial(activeTestimonialIndex + 1);
+        }, 6000);
+      };
+
+      testimonialPrevButton?.addEventListener('click', () => {
+        updateTestimonial(activeTestimonialIndex - 1);
+        startTestimonialAutoPlay();
+      });
+
+      testimonialNextButton?.addEventListener('click', () => {
+        updateTestimonial(activeTestimonialIndex + 1);
+        startTestimonialAutoPlay();
+      });
+
+      testimonialDots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const requestedIndex = Number.parseInt(dot.dataset.slideIndex || '', 10);
+          if (Number.isNaN(requestedIndex)) {
+            return;
+          }
+          updateTestimonial(requestedIndex);
+          startTestimonialAutoPlay();
+        });
+      });
+
+      testimonialCarousel.addEventListener('mouseenter', stopTestimonialAutoPlay);
+      testimonialCarousel.addEventListener('focusin', stopTestimonialAutoPlay);
+      testimonialCarousel.addEventListener('mouseleave', startTestimonialAutoPlay);
+      testimonialCarousel.addEventListener('focusout', event => {
+        if (!testimonialCarousel.contains(event.relatedTarget)) {
+          startTestimonialAutoPlay();
+        }
+      });
+
+      updateTestimonial(0);
+      startTestimonialAutoPlay();
+    }
 
     let isProgressTicking = false;
     const updateScrollProgress = () => {

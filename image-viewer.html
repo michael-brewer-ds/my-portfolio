@@ -321,7 +321,7 @@
     }
 
     backButton.addEventListener('click', event => {
-      if (document.referrer && history.length > 1) {
+      if (history.length > 1) {
         event.preventDefault();
         history.back();
       }
