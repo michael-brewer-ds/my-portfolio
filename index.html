@@ -132,6 +132,9 @@
       gap: 32px;
       align-items: center;
       grid-template-columns: minmax(0, 1.4fr) minmax(240px, 360px);
+      grid-template-areas:
+        "hero-text hero-portrait"
+        "hero-actions hero-portrait";
       position: relative;
       z-index: 1;
       padding: 34px;
@@ -143,6 +146,7 @@
       box-shadow: 0 20px 48px rgba(2, 6, 23, 0.28);
     }
     .hero-text {
+      grid-area: hero-text;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -178,10 +182,12 @@
       text-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
     }
     .hero-actions {
+      grid-area: hero-actions;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: -8px;
+      align-self: end;
     }
     .hero-action {
       display: inline-flex;
@@ -218,6 +224,7 @@
       border-color: rgba(191, 219, 254, 0.55);
     }
     .hero-portrait {
+      grid-area: hero-portrait;
       display: grid;
       justify-items: center;
     }
@@ -701,6 +708,10 @@
         grid-template-columns: 1fr;
       }
       .hero-grid {
+        grid-template-areas:
+          "hero-text"
+          "hero-portrait"
+          "hero-actions";
         padding: 24px;
         border-radius: 24px;
         gap: 24px;
@@ -720,6 +731,8 @@
       }
       .hero-actions {
         justify-content: center;
+        margin-top: 0;
+        align-self: center;
       }
       .hero-portrait {
         justify-items: center;
@@ -812,13 +825,13 @@
           <p class="hero-title-subtitle">Focused on human-centered insights</p>
           <br>
           <p>Currently completing a 9-month AI & Machine Learning program at TripleTen while building hands-on experience in Python, data cleaning, exploratory data analysis, statistical analysis, and model development.</p>
-          <div class="hero-actions">
-            <a class="hero-action hero-action-primary" href="resume.pdf" download>Download Resume</a>
-            <a class="hero-action hero-action-secondary" href="contact.html">Contact Michael</a>
-          </div>
         </div>
         <div class="hero-portrait">
           <img src="headshot.png" alt="Michael Brewer headshot" />
+        </div>
+        <div class="hero-actions">
+          <a class="hero-action hero-action-primary" href="resume.pdf" download>Download Resume</a>
+          <a class="hero-action hero-action-secondary" href="contact.html">Contact Michael</a>
         </div>
       </div>
     </section>
