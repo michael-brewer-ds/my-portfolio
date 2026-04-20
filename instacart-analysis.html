@@ -216,7 +216,7 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      padding: 30px 0 36px;
+      padding: 90px 0 108px;
     }
     .site-footer-inner {
       text-align: center;
@@ -302,12 +302,68 @@
       color: #94a3b8;
       font-size: 0.9rem;
     }
+    .floating-project-nav {
+      position: fixed;
+      right: 22px;
+      bottom: 24px;
+      z-index: 980;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 30px rgba(2, 6, 23, 0.34);
+    }
+    .floating-nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(30, 41, 59, 0.7);
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .floating-nav-button:hover {
+      transform: translateY(-1px);
+      background: rgba(37, 99, 235, 0.26);
+      border-color: rgba(147, 197, 253, 0.75);
+    }
+    .floating-nav-button.active {
+      background: #2563eb;
+      border-color: rgba(191, 219, 254, 0.9);
+      color: #ffffff;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.4) inset;
+    }
     @media (max-width: 860px) {
       .project-header h1 {
         font-size: 2rem;
       }
       .project-card {
         padding: 28px;
+      }
+      .floating-project-nav {
+        left: 12px;
+        right: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
+        justify-content: center;
+        border-radius: 18px;
+        gap: 8px;
+      }
+      .floating-nav-button {
+        flex: 1;
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 0.84rem;
+        text-align: center;
       }
       .menu-toggle {
         display: inline-flex;
@@ -439,6 +495,12 @@
       </div>
     </section>
   </main>
+
+  <div class="floating-project-nav" aria-label="Project page navigation">
+    <a class="floating-nav-button" href="index.html#projects">All Projects</a>
+    <a class="floating-nav-button active" href="instacart-analysis.html" aria-current="page">Instacart</a>
+    <a class="floating-nav-button" href="megaline-analysis.html">Megaline</a>
+  </div>
 
   <footer class="site-footer">
     <div class="container site-footer-inner">
