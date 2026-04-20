@@ -70,7 +70,7 @@
       font-weight: 600;
     }
     .hero {
-      --hero-bg-image: url('background8_small.png');
+      --hero-bg-image: url('background8_smaller.png');
       position: relative;
       background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(17, 24, 39, 0.1) 52%, rgba(30, 41, 59, 0.1) 100%),
                         radial-gradient(circle at top left, rgba(96, 165, 250, 0.1), transparent 28%),
@@ -812,21 +812,31 @@
       footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
     }
 
-    // Default to small hero image and upgrade to large only when likely to perform well.
+    // Default to smallest hero image and upgrade by connection/device capability.
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     const prefersDataSaver = connection?.saveData === true;
     const connectionType = (connection?.effectiveType || '').toLowerCase();
     const isSlowConnection = connectionType.includes('2g') || connectionType === 'slow-2g';
+    const isModerateConnection = connectionType === '3g';
     const hasLowDeviceMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2;
-    const shouldLoadLargeHeroImage = !prefersDataSaver && !isSlowConnection && !hasLowDeviceMemory;
+    const hasMediumDeviceMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
 
-    if (heroSection && shouldLoadLargeHeroImage) {
-      const largeHeroImage = new Image();
-      largeHeroImage.decoding = 'async';
-      largeHeroImage.onload = () => {
-        heroSection.style.setProperty('--hero-bg-image', "url('background8.png')");
+    let heroUpgradeTarget = '';
+    if (!prefersDataSaver && !isSlowConnection && !hasLowDeviceMemory) {
+      if (isModerateConnection || hasMediumDeviceMemory) {
+        heroUpgradeTarget = 'background8_small.png';
+      } else {
+        heroUpgradeTarget = 'background8.png';
+      }
+    }
+
+    if (heroSection && heroUpgradeTarget) {
+      const heroImage = new Image();
+      heroImage.decoding = 'async';
+      heroImage.onload = () => {
+        heroSection.style.setProperty('--hero-bg-image', `url('${heroUpgradeTarget}')`);
       };
-      largeHeroImage.src = 'background8.png';
+      heroImage.src = heroUpgradeTarget;
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
