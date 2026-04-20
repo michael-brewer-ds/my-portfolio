@@ -197,6 +197,16 @@
       margin-top: 8px;
       margin-bottom: 0;
     }
+    .form-status {
+      margin-top: 12px;
+      margin-bottom: 0;
+      color: #93c5fd;
+      font-size: 0.92rem;
+      min-height: 1.3em;
+    }
+    .form-status.error {
+      color: #fca5a5;
+    }
     .submit-row {
       margin-top: 20px;
       display: flex;
@@ -404,7 +414,7 @@
 
         <form action="#" method="POST">
           <input type="hidden" name="_subject" value="New portfolio contact form submission" />
-          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_captcha" value="true" />
           <input type="hidden" name="_next" value="contact-success.html" />
           <input type="text" name="_honey" class="hidden-trap" tabindex="-1" autocomplete="off" />
 
@@ -452,6 +462,7 @@
 
           <p class="required-key">* Required: name, email, and message</p>
           <p class="note">When submitted, this form is delivered to my inbox.</p>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
 
           <div class="submit-row">
             <button type="submit">Send Message</button>
@@ -502,6 +513,10 @@
     const footerPhone = document.getElementById('footer-phone');
     const contactForm = document.querySelector('form[action="#"]');
     const nextRedirectField = contactForm?.querySelector('input[name="_next"]');
+    const honeyField = contactForm?.querySelector('input[name="_honey"]');
+    const formStatus = document.getElementById('form-status');
+    const formStartTime = Date.now();
+    const minSubmitDelayMs = 3000;
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -516,6 +531,26 @@
     }
     if (nextRedirectField) {
       nextRedirectField.value = new URL('contact-success.html', window.location.href).href;
+    }
+    if (contactForm) {
+      contactForm.addEventListener('submit', event => {
+        const elapsedMs = Date.now() - formStartTime;
+        const isTrapFilled = Boolean(honeyField?.value.trim());
+
+        if (elapsedMs < minSubmitDelayMs || isTrapFilled) {
+          event.preventDefault();
+          if (formStatus) {
+            formStatus.textContent = 'Submission blocked. Please complete the form and try again.';
+            formStatus.classList.add('error');
+          }
+          return;
+        }
+
+        if (formStatus) {
+          formStatus.textContent = 'Sending...';
+          formStatus.classList.remove('error');
+        }
+      });
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
