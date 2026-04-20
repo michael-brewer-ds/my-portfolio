@@ -70,11 +70,12 @@
       font-weight: 600;
     }
     .hero {
+      --hero-bg-image: url('background8_small.png');
       position: relative;
       background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(17, 24, 39, 0.1) 52%, rgba(30, 41, 59, 0.1) 100%),
                         radial-gradient(circle at top left, rgba(96, 165, 250, 0.1), transparent 28%),
                         radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 24%),
-                        url('background8.png');
+                        var(--hero-bg-image);
       background-color: #0f172a;
       background-position: center, top left, bottom right, center;
       background-repeat: no-repeat;
@@ -800,6 +801,7 @@
     const telPrefix = decodeFooterValue('dGVsOg==');
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
+    const heroSection = document.querySelector('.hero');
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -808,6 +810,23 @@
     if (footerPhone && phoneValue) {
       footerPhone.textContent = phoneValue;
       footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
+    }
+
+    // Default to small hero image and upgrade to large only when likely to perform well.
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const prefersDataSaver = connection?.saveData === true;
+    const connectionType = (connection?.effectiveType || '').toLowerCase();
+    const isSlowConnection = connectionType.includes('2g') || connectionType === 'slow-2g';
+    const hasLowDeviceMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2;
+    const shouldLoadLargeHeroImage = !prefersDataSaver && !isSlowConnection && !hasLowDeviceMemory;
+
+    if (heroSection && shouldLoadLargeHeroImage) {
+      const largeHeroImage = new Image();
+      largeHeroImage.decoding = 'async';
+      largeHeroImage.onload = () => {
+        heroSection.style.setProperty('--hero-bg-image', "url('background8.png')");
+      };
+      largeHeroImage.src = 'background8.png';
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
