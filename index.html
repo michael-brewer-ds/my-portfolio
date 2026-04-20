@@ -184,6 +184,20 @@
       background-position: center;
       background-attachment: scroll;
     }
+    @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+      .hero {
+        background-attachment: scroll, scroll, scroll, fixed;
+      }
+      #projects {
+        background-attachment: scroll, scroll, scroll, fixed;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero,
+      #projects {
+        background-attachment: scroll;
+      }
+    }
     section::before,
     section::after {
       content: "";
@@ -526,6 +540,10 @@
       .hero {
         padding-top: 70px;
       }
+      .hero,
+      #projects {
+        background-attachment: scroll;
+      }
       .hero h2 {
         text-align: center;
       }
@@ -581,7 +599,7 @@
     }
   </style>
 </head>
-<body>
+<body class="parallax-enabled">
   <header>
     <div class="container">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative;">

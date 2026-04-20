@@ -38,9 +38,19 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-attachment: scroll;
       min-height: 100vh;
       overflow-x: hidden;
+    }
+    @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+      body {
+        background-attachment: fixed;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        background-attachment: scroll;
+      }
     }
     header {
       position: sticky;
@@ -369,6 +379,9 @@
       box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.4) inset;
     }
     @media (max-width: 860px) {
+      body {
+        background-attachment: scroll;
+      }
       .project-header h1 {
         font-size: 2rem;
       }
@@ -446,7 +459,7 @@
       </div>
     </div>
   </header>
-
+  <body class="parallax-enabled">
   <section class="project-header">
     <div class="container">
       <h1>Megaline Statistical Data Analysis</h1>

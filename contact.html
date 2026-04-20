@@ -31,6 +31,16 @@
       padding-inline-start: max(6px, env(safe-area-inset-left));
       padding-inline-end: max(6px, env(safe-area-inset-right));
     }
+    @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+      body {
+        background-attachment: scroll, scroll, scroll, fixed;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        background-attachment: scroll, scroll, scroll, scroll;
+      }
+    }
     header {
       position: sticky;
       top: 0;
@@ -347,6 +357,9 @@
       pointer-events: none;
     }
     @media (max-width: 760px) {
+      body {
+        background-attachment: scroll, scroll, scroll, scroll;
+      }
       .contact-shell {
         padding: 22px;
       }
@@ -394,7 +407,7 @@
     }
   </style>
 </head>
-<body>
+<body class="parallax-enabled contact-page">
   <header>
     <div class="header-container">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; padding: 14px 0;">
