@@ -285,10 +285,21 @@
     }
     #projects {
       background-image:
-        linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(17, 24, 39, 0.1) 52%, rgba(30, 41, 59, 0.1) 100%),
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.1), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 24%),
         url('background6.png');
       background-color: #1e293b;
+      background-position: center, top left, bottom right, center;
+      background-repeat: no-repeat;
+      background-size: cover, auto, auto, cover;
       padding-bottom: 300px;
+    }
+    #projects .resume-card {
+      background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);
+      border: 1px solid rgba(226, 232, 240, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     #projects h2 {
       color: #f1f5f9;
@@ -704,14 +715,14 @@
         <h2>Featured Projects</h2>
         <div class="projects-grid" style="display: grid; gap: 32px; margin-top: 32px;">
           
-          <div style="border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 12px; padding: 28px; background: rgba(30, 41, 59, 0.3);">
+          <div style="border: 1px solid rgba(226, 232, 240, 0.4); border-radius: 12px; padding: 28px; background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);">
             <h3 style="color: #bfdbfe; margin-top: 0; font-size: 1.3rem;">Instacart Market Basket Analysis</h3>
             <p style="color: #cbd5e1; margin: 12px 0;">Comprehensive exploratory data analysis of 3 million Instacart orders, uncovering customer purchasing patterns, basket composition, and reorder behavior. Delivered actionable insights for merchandising strategies, recommendation systems, and operational planning.</p>
             <p style="color: #94a3b8; font-size: 0.95rem; margin: 12px 0;"><strong>Technologies:</strong> Python, Pandas, Matplotlib, Data Visualization, Exploratory Data Analysis</p>
             <a href="instacart-analysis.html" style="display: inline-block; margin-top: 16px; padding: 10px 20px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">View Project →</a>
           </div>
 
-          <div style="border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 12px; padding: 28px; background: rgba(30, 41, 59, 0.3);">
+          <div style="border: 1px solid rgba(226, 232, 240, 0.4); border-radius: 12px; padding: 28px; background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);">
             <h3 style="color: #bfdbfe; margin-top: 0; font-size: 1.3rem;">Megaline Statistical Analysis</h3>
             <p style="color: #cbd5e1; margin: 12px 0;">Applied statistical hypothesis testing to analyze telecom plan performance and revenue generation, providing data-driven recommendations for marketing budget allocation. Demonstrated expertise in translating statistical analysis into actionable business strategy.</p>
             <p style="color: #94a3b8; font-size: 0.95rem; margin: 12px 0;"><strong>Technologies:</strong> Python, Pandas, SciPy, Statistical Analysis, Hypothesis Testing, Business Analytics</p>
