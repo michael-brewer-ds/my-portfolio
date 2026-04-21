@@ -512,6 +512,11 @@
       margin: 0;
       max-width: 720px;
       color: #cbd5e1;
+      text-align: center;
+      justify-self: center;
+    }
+    #testimonials .resume-card h2 {
+      text-align: center;
     }
     .testimonials-carousel {
       margin-top: 12px;
@@ -521,25 +526,22 @@
     .testimonial-stage {
       width: min(860px, 100%);
       margin: 0 auto;
+      display: grid;
+      align-items: start;
     }
     .testimonial-slide {
       margin: 0;
-      display: none;
-    }
-    .testimonial-slide[hidden] {
-      display: none !important;
+      grid-area: 1 / 1;
+      display: block;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(4px);
+      transition: transform 0.3s ease;
     }
     .testimonial-slide.active {
-      display: block;
-      animation: testimonialFadeIn 0.4s ease;
-    }
-    @keyframes testimonialFadeIn {
-      from {
-        transform: translateY(4px);
-      }
-      to {
-        transform: translateY(0);
-      }
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
     }
     .testimonial-card {
       display: block;
@@ -548,12 +550,6 @@
       background: rgba(248, 250, 252, 0.07);
       border: 1px solid rgba(148, 163, 184, 0.18);
       box-shadow: 0 18px 40px rgba(2, 6, 23, 0.22);
-    }
-    .testimonial-stage .testimonial-slide {
-      display: none;
-    }
-    .testimonial-stage .testimonial-slide.active {
-      display: block;
     }
     .testimonial-card img {
       display: block;
@@ -956,14 +952,24 @@
                 <img src="t1.png" alt="Testimonial from Anne-Marie Pritchett, Director of Communications at Colossal Management, LLC" loading="eager" />
               </a>
             </figure>
-            <figure class="testimonial-slide testimonial-card" hidden>
+            <figure class="testimonial-slide testimonial-card">
               <a href="image-viewer.html?img=t2.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 2 in full size viewer">
                 <img src="t2.png" alt="Testimonial from Melody Montoya, Marketing Automation Associate Manager at Beckman Coulter Life Sciences" loading="eager" />
               </a>
             </figure>
-            <figure class="testimonial-slide testimonial-card" hidden>
+            <figure class="testimonial-slide testimonial-card">
               <a href="image-viewer.html?img=t3.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 3 in full size viewer">
                 <img src="t3.png" alt="Testimonial from Shauna Vert, Principal Consultant and Owner of Shauna Vert Communications" loading="eager" />
+              </a>
+            </figure>
+            <figure class="testimonial-slide testimonial-card">
+              <a href="image-viewer.html?img=t4.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 4 in full size viewer">
+                <img src="t4.png" alt="Testimonial 4" loading="eager" />
+              </a>
+            </figure>
+            <figure class="testimonial-slide testimonial-card">
+              <a href="image-viewer.html?img=t5.png&from=index.html%23testimonials" class="testimonial-image-link" aria-label="Open testimonial 5 in full size viewer">
+                <img src="t5.png" alt="Testimonial 5" loading="eager" />
               </a>
             </figure>
           </div>
@@ -973,6 +979,8 @@
               <button class="testimonial-dot active" type="button" data-slide-index="0" aria-label="Show testimonial 1" aria-current="true"></button>
               <button class="testimonial-dot" type="button" data-slide-index="1" aria-label="Show testimonial 2" aria-current="false"></button>
               <button class="testimonial-dot" type="button" data-slide-index="2" aria-label="Show testimonial 3" aria-current="false"></button>
+              <button class="testimonial-dot" type="button" data-slide-index="3" aria-label="Show testimonial 4" aria-current="false"></button>
+              <button class="testimonial-dot" type="button" data-slide-index="4" aria-label="Show testimonial 5" aria-current="false"></button>
             </div>
             <button class="testimonial-nav" type="button" data-direction="next" aria-label="Show next testimonial">Next</button>
           </div>
@@ -1111,7 +1119,7 @@
         testimonialSlides.forEach((slide, slideIndex) => {
           const isActive = slideIndex === activeTestimonialIndex;
           slide.classList.toggle('active', isActive);
-          slide.hidden = !isActive;
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
 
         testimonialDots.forEach((dot, dotIndex) => {
