@@ -195,6 +195,73 @@
     .image-link {
       display: block;
     }
+    .video-preview {
+      position: relative;
+      margin-top: 32px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      padding: 0;
+      background: #0f172a;
+    }
+    .video-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(1.05);
+    }
+    .video-preview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.45));
+      transition: background 0.25s ease;
+    }
+    .video-preview:hover::before,
+    .video-preview:focus-visible::before {
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0.1), rgba(2, 6, 23, 0.35));
+    }
+    .video-preview-play {
+      position: absolute;
+      inset: auto auto 50% 50%;
+      transform: translate(-50%, 50%);
+      width: 78px;
+      height: 78px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(15, 23, 42, 0.75);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 1;
+      color: #f8fafc;
+    }
+    .video-preview:hover .video-preview-play,
+    .video-preview:focus-visible .video-preview-play {
+      transform: translate(-50%, 50%) scale(1.04);
+      background: rgba(37, 99, 235, 0.8);
+    }
+    .video-preview:focus-visible {
+      outline: 2px solid rgba(147, 197, 253, 0.9);
+      outline-offset: 2px;
+    }
+    .video-frame {
+      margin-top: 32px;
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
@@ -504,15 +571,18 @@
         </a>
         <p>Bananas, bagged organic bananas, and organic strawberries dominate the reorder list. Perishable staples and produce are replenished far more frequently than occasional or long-lasting goods. This signal is valuable for recommendation systems, replenishment prompts, and inventory planning around habitual purchases.</p>
 
-        <div style="margin-top: 32px; aspect-ratio: 16/9; width: 100%;">
-          <iframe
-            src="https://www.youtube.com/embed/fXGTaGjqERc"
-            title="Instacart – Now That's an Ad (feat. Ben Stiller)"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="width: 100%; height: 100%; border: none; border-radius: 8px;">
-          </iframe>
-        </div>
+        <button
+          type="button"
+          class="video-preview"
+          id="instacart-video-preview"
+          aria-label="Play Instacart commercial video">
+          <img src="instacart_social.png" alt="Instacart commercial video thumbnail">
+          <span class="video-preview-play" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </span>
+        </button>
         <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; font-style: italic;">Probably why bananas were front and center in Instacart's 2026 Super Bowl commercial featuring Ben Stiller — they're the most reordered item on the platform.</p>
 
         <h2 style="margin-top: 40px;">Methodology</h2>
@@ -594,6 +664,7 @@
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
     const scrollProgressBar = document.getElementById('scroll-progress-bar');
+    const instacartVideoPreview = document.getElementById('instacart-video-preview');
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -602,6 +673,22 @@
     if (footerPhone && phoneValue) {
       footerPhone.textContent = phoneValue;
       footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
+    }
+
+    if (instacartVideoPreview) {
+      instacartVideoPreview.addEventListener('click', () => {
+        const frameWrapper = document.createElement('div');
+        frameWrapper.className = 'video-frame';
+
+        const videoFrame = document.createElement('iframe');
+        videoFrame.src = 'https://www.youtube-nocookie.com/embed/fXGTaGjqERc?autoplay=1&rel=0';
+        videoFrame.title = "Instacart - Now That's an Ad (feat. Ben Stiller)";
+        videoFrame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        videoFrame.allowFullscreen = true;
+
+        frameWrapper.appendChild(videoFrame);
+        instacartVideoPreview.replaceWith(frameWrapper);
+      }, { once: true });
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
