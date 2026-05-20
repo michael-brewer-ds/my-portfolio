@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="fav.svg" />
-  <title>Instacart Market Basket Analysis | Michael Brewer</title>
+  <title>Video Game Sales Forecasting Analysis | Michael Brewer</title>
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://michael-brewer-ds.github.io/my-portfolio/instacart-analysis.html" />
-  <meta property="og:title" content="Instacart Market Basket Analysis | Michael Brewer" />
-  <meta property="og:description" content="Comprehensive exploratory data analysis of 3 million Instacart orders, uncovering customer purchasing patterns, basket composition, and reorder behavior." />
-  <meta property="og:image" content="https://michael-brewer-ds.github.io/my-portfolio/instacart_social.png" />
+  <meta property="og:url" content="https://michael-brewer-ds.github.io/my-portfolio/video-game-sales-analysis.html" />
+  <meta property="og:title" content="Video Game Sales Forecasting Analysis | Michael Brewer" />
+  <meta property="og:description" content="Sales forecasting analysis of global video game performance across platforms, genres, and regions to support 2017 marketing strategy." />
+  <meta property="og:image" content="https://michael-brewer-ds.github.io/my-portfolio/video-game-sales-analysis-images/vg_sales_social.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Instacart Market Basket Analysis | Michael Brewer" />
-  <meta name="twitter:description" content="Comprehensive exploratory data analysis of 3 million Instacart orders, uncovering customer purchasing patterns, basket composition, and reorder behavior." />
-  <meta name="twitter:image" content="https://michael-brewer-ds.github.io/my-portfolio/instacart_social.png" />
+  <meta name="twitter:title" content="Video Game Sales Forecasting Analysis | Michael Brewer" />
+  <meta name="twitter:description" content="Sales forecasting analysis of global video game performance across platforms, genres, and regions to support 2017 marketing strategy." />
+  <meta name="twitter:image" content="https://michael-brewer-ds.github.io/my-portfolio/video-game-sales-analysis-images/vg_sales_social.png" />
   <style>
     html {
       box-sizing: border-box;
@@ -35,7 +35,7 @@
       display: flex;
       flex-direction: column;
       background-color: #0f172a;
-      background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('background5.png');
+      background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('background6.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -168,6 +168,11 @@
       margin-bottom: 24px;
       margin-top: 0;
     }
+    .project-card h3 {
+      color: #bfdbfe;
+      font-size: 1.25rem;
+      margin-top: 32px;
+    }
     .project-card p,
     .project-card li {
       color: #f1f5f9;
@@ -196,72 +201,16 @@
     .image-link {
       display: block;
     }
-    .video-preview {
-      position: relative;
-      margin-top: 32px;
-      width: 100%;
-      aspect-ratio: 16/9;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      padding: 0;
-      background: #0f172a;
-    }
-    .video-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: saturate(1.05);
-    }
-    .video-preview::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.2), rgba(2, 6, 23, 0.45));
-      transition: background 0.25s ease;
-    }
-    .video-preview:hover::before,
-    .video-preview:focus-visible::before {
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.1), rgba(2, 6, 23, 0.35));
-    }
-    .video-preview-play {
-      position: absolute;
-      inset: auto auto 50% 50%;
-      transform: translate(-50%, 50%);
-      width: 78px;
-      height: 78px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      background: rgba(15, 23, 42, 0.75);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, background 0.2s ease;
-      z-index: 1;
-      color: #f8fafc;
-    }
-    .video-preview:hover .video-preview-play,
-    .video-preview:focus-visible .video-preview-play {
-      transform: translate(-50%, 50%) scale(1.04);
-      background: rgba(37, 99, 235, 0.8);
-    }
-    .video-preview:focus-visible {
-      outline: 2px solid rgba(147, 197, 253, 0.9);
-      outline-offset: 2px;
-    }
-    .video-frame {
-      margin-top: 32px;
-      aspect-ratio: 16/9;
-      width: 100%;
-    }
-    .video-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .highlight-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 4px solid #2563eb;
+      padding: 20px;
       border-radius: 8px;
+      margin: 24px 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
     }
     .tech-stack {
       display: flex;
@@ -530,70 +479,66 @@
       <div class="header-progress-bar" id="scroll-progress-bar"></div>
     </div>
   </header>
-  <body class="parallax-enabled">
+
   <section class="project-header">
     <div class="container">
-      <h1>Instacart Market Basket Analysis</h1>
-      <p>Transforming 3 million customer orders into actionable insights for merchandising, recommendations, and operational excellence.</p>
+      <h1>Video Game Sales Forecasting Analysis</h1>
+      <p>Forecast-driven analysis of global game performance across platforms, genres, and regions to inform Ice's 2017 advertising strategy.</p>
     </div>
   </section>
 
   <main>
     <section style="padding: 0;">
-      <img src="instacart_header.png" alt="Instacart Analysis Header" style="display:block; width:100%; max-width:900px; margin:0 auto 60px; border-radius:12px;">
+      <img src="video-game-sales-analysis-images/vg_sales_header.png" alt="Video game sales forecasting project header" style="display:block; width:100%; max-width:900px; margin:0 auto 60px; border-radius:12px;">
       <div class="container project-card">
         <h2>Project Overview</h2>
-        <p>This comprehensive analysis of 3 million Instacart orders reveals critical insights into customer purchasing behavior, enabling data-driven decisions for inventory management, recommendation systems, and operational planning. By examining shopping patterns, basket composition, and reorder behavior, this project demonstrates the ability to transform raw data into actionable business intelligence that can optimize user experience and operational efficiency.</p>
-        <p>The analysis follows a complete data science workflow: data inspection, cleaning, transformation, and exploratory visualization to translate quantitative findings into meaningful business insights that drive strategic decision-making.</p>
+        <p>This project analyzes historical video game sales to identify the strongest predictors of commercial success for 2017 campaign planning. I cleaned and standardized the dataset, evaluated platform lifecycles, compared genre performance, built regional market profiles, and validated assumptions through hypothesis testing.</p>
+        <p>The objective was to convert large-scale historical sales data into practical recommendations for platform focus, genre targeting, and region-specific campaign strategy.</p>
 
         <h2 style="margin-top: 40px;">Key Findings</h2>
-        
-        <h3 style="color: #bfdbfe; font-size: 1.2rem;">Shopping Patterns</h3>
-        <a href="image-viewer.html?img=Instacart4_enhanced_4x_bordered.png&from=instacart-analysis.html" class="image-link">
-          <img src="Instacart4_enhanced_4x_bordered.png" alt="Time of Day People Shop for Groceries" class="screenshot">
+
+        <h3>Platform Lifecycle Drives Forecast Relevance</h3>
+        <a href="image-viewer.html?img=video-game-sales-analysis-images/vg_chart_platform_trends.png&from=video-game-sales-analysis.html" class="image-link">
+          <img src="video-game-sales-analysis-images/vg_chart_platform_trends.png" alt="Annual global sales by leading platform from 2012 to 2016" class="screenshot">
         </a>
-        <p>Customer activity follows a strong daily rhythm, with peak ordering concentrated between 8 AM and 6 PM. The highest volume occurs around 10 AM, making that window critical for staffing and fulfillment planning. Orders drop sharply after 5 PM and remain minimal overnight.</p>
+        <p>Older platforms follow a clear rise-peak-decline cycle. To avoid outdated signals, the most relevant forecasting window was narrowed to 2012-2016, where active platforms and recent market behavior are strongest.</p>
 
-        <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Basket Composition</h3>
-        <a href="image-viewer.html?img=Instacart3_enhanced_4x_bordered.png&from=instacart-analysis.html" class="image-link">
-          <img src="Instacart3_enhanced_4x_bordered.png" alt="Items Per Order" class="screenshot">
+        <h3>Top Platform Signals for 2017</h3>
+        <a href="image-viewer.html?img=video-game-sales-analysis-images/vg_chart_ps4_reviews_scatter.png&from=video-game-sales-analysis.html" class="image-link">
+          <img src="video-game-sales-analysis-images/vg_chart_ps4_reviews_scatter.png" alt="PS4 sales compared against critic scores" class="screenshot">
         </a>
-        <p>Most orders contain 5-6 items, with the majority falling between 1-20 items. This insight is valuable for merchandising strategies, recommendation engine design, and user-interface decisions around browsing and cart building.</p>
+        <p>PS4 and XOne were the strongest current-generation options in the selected period, while prior-generation leaders like PS3 and X360 showed clear decline. Platform cycle timing was more informative than long-horizon historical totals.</p>
 
-        <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Product Popularity</h3>
-        <a href="image-viewer.html?img=Instacart1_enhanced_4x_bordered.png&from=instacart-analysis.html" class="image-link">
-          <img src="Instacart1_enhanced_4x_bordered.png" alt="Top 20 Popular Products" class="screenshot">
+        <h3>Genre Performance Is Not One-Dimensional</h3>
+        <a href="image-viewer.html?img=video-game-sales-analysis-images/vg_chart_genre_share.png&from=video-game-sales-analysis.html" class="image-link">
+          <img src="video-game-sales-analysis-images/vg_chart_genre_share.png" alt="Genre market share by total global sales" class="screenshot">
         </a>
-        <p>The most frequently purchased items are overwhelmingly produce, with milk as a notable exception. This pattern points to strong recurring demand for fresh, fast-moving staple items and everyday household replenishment.</p>
+        <p>Action led total market size, while Shooter led per-title upside. Role-Playing and Sports remained high-value supporting categories. This indicates campaign strategy should balance volume genres with efficiency genres.</p>
 
-        <h3 style="color: #bfdbfe; font-size: 1.2rem; margin-top: 32px;">Reorder Behavior</h3>
-        <a href="image-viewer.html?img=Instacart2_enhanced_4x_bordered.png&from=instacart-analysis.html" class="image-link">
-          <img src="Instacart2_enhanced_4x_bordered.png" alt="Top 20 Most Reordered Items" class="screenshot">
+        <h3>Regional Preferences Require Regional Strategy</h3>
+        <a href="image-viewer.html?img=video-game-sales-analysis-images/vg_chart_regional_platforms.png&from=video-game-sales-analysis.html" class="image-link">
+          <img src="video-game-sales-analysis-images/vg_chart_regional_platforms.png" alt="Top platform market share by region" class="screenshot">
         </a>
-        <p>Bananas, bagged organic bananas, and organic strawberries dominate the reorder list. Perishable staples and produce are replenished far more frequently than occasional or long-lasting goods. This signal is valuable for recommendation systems, replenishment prompts, and inventory planning around habitual purchases.</p>
+        <p>North America and Europe showed stronger PlayStation/Xbox patterns, while Japan leaned more toward Nintendo and handheld-oriented profiles. A single global message would miss meaningful regional demand differences.</p>
 
-        <button
-          type="button"
-          class="video-preview"
-          id="instacart-video-preview"
-          aria-label="Play Instacart commercial video">
-          <img src="instacart_social.png" alt="Instacart commercial video thumbnail">
-          <span class="video-preview-play" aria-hidden="true">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-              <path d="M8 5v14l11-7z"></path>
-            </svg>
-          </span>
-        </button>
-        <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; font-style: italic;">Probably why bananas were front and center in Instacart's 2026 Super Bowl commercial featuring Ben Stiller — they're the most reordered item on the platform.</p>
+        <h3>Ratings Context Varies by Region</h3>
+        <a href="image-viewer.html?img=video-game-sales-analysis-images/vg_chart_esrb_region.png&from=video-game-sales-analysis.html" class="image-link">
+          <img src="video-game-sales-analysis-images/vg_chart_esrb_region.png" alt="Regional sales by ESRB rating" class="screenshot">
+        </a>
+        <p>ESRB rating patterns were more informative in North America and Europe than in Japan, where many titles have missing or non-ESRB categorization in the dataset. Rating-based targeting should therefore be applied regionally, not globally.</p>
 
-        <h2 style="margin-top: 40px;">Methodology</h2>
+        <div class="highlight-box">
+          <p><strong>Strategic takeaway:</strong> For 2017, prioritize PS4/XOne titles in Shooter, Action, Sports, and Role-Playing, while tailoring platform and genre emphasis by region.</p>
+        </div>
+
+        <h2 style="margin-top: 40px;">Analytical Approach</h2>
         <ul>
-          <li>Data inspection using pandas .info() and .head() methods</li>
-          <li>Contextual missing value handling and duplicate removal</li>
-          <li>Multi-table merging and data transformation</li>
-          <li>Temporal analysis of ordering patterns by hour and day</li>
-          <li>Product-level reorder rate calculations</li>
-          <li>Distribution analysis and visualization with Matplotlib</li>
+          <li>Data cleaning and type correction, including treatment of missing and tbd review values</li>
+          <li>Feature engineering with total global sales aggregation</li>
+          <li>Temporal release trend and platform lifecycle analysis</li>
+          <li>Platform, genre, and regional market share comparisons</li>
+          <li>Review-score correlation analysis for sales signal strength</li>
+          <li>Two-sample hypothesis testing for rating comparisons</li>
         </ul>
 
         <h2 style="margin-top: 40px;">Tools & Technologies</h2>
@@ -601,16 +546,17 @@
           <span class="tech-tag">Python</span>
           <span class="tech-tag">Pandas</span>
           <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">SciPy</span>
           <span class="tech-tag">Matplotlib</span>
+          <span class="tech-tag">Seaborn</span>
           <span class="tech-tag">Exploratory Data Analysis</span>
-          <span class="tech-tag">Data Visualization</span>
-          <span class="tech-tag">Data Cleaning</span>
-          <span class="tech-tag">Data Transformation</span>
+          <span class="tech-tag">Hypothesis Testing</span>
+          <span class="tech-tag">Market Analysis</span>
         </div>
 
         <h2 style="margin-top: 40px;">View Full Project</h2>
-        <p>Explore the complete notebook with all code, visualizations, and detailed explanations:</p>
-        <a href="https://github.com/michael-brewer-ds/instacart-analysis" target="_blank" class="github-button">View on GitHub →</a>
+        <p>Explore the complete notebook, code, visualizations, and statistical tests:</p>
+        <a href="https://github.com/michael-brewer-ds/video-game-sales-forecasting" target="_blank" class="github-button">View on GitHub →</a>
       </div>
     </section>
     <section class="bottom-cta">
@@ -622,9 +568,9 @@
 
   <div class="floating-project-nav" aria-label="Project page navigation">
     <a class="floating-nav-button" href="index.html#projects">All Projects</a>
-    <a class="floating-nav-button active" href="instacart-analysis.html" aria-current="page">Instacart</a>
+    <a class="floating-nav-button" href="instacart-analysis.html">Instacart</a>
     <a class="floating-nav-button" href="megaline-analysis.html">Megaline</a>
-    <a class="floating-nav-button" href="video-game-sales-analysis.html">Video Games</a>
+    <a class="floating-nav-button active" href="video-game-sales-analysis.html" aria-current="page">Video Games</a>
   </div>
 
   <footer class="site-footer">
@@ -666,7 +612,6 @@
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
     const scrollProgressBar = document.getElementById('scroll-progress-bar');
-    const instacartVideoPreview = document.getElementById('instacart-video-preview');
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -675,22 +620,6 @@
     if (footerPhone && phoneValue) {
       footerPhone.textContent = phoneValue;
       footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
-    }
-
-    if (instacartVideoPreview) {
-      instacartVideoPreview.addEventListener('click', () => {
-        const frameWrapper = document.createElement('div');
-        frameWrapper.className = 'video-frame';
-
-        const videoFrame = document.createElement('iframe');
-        videoFrame.src = 'https://www.youtube-nocookie.com/embed/fXGTaGjqERc?autoplay=1&rel=0';
-        videoFrame.title = "Instacart - Now That's an Ad (feat. Ben Stiller)";
-        videoFrame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        videoFrame.allowFullscreen = true;
-
-        frameWrapper.appendChild(videoFrame);
-        instacartVideoPreview.replaceWith(frameWrapper);
-      }, { once: true });
     }
 
     const menuToggle = document.querySelector('.menu-toggle');
