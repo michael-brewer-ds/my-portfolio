@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="fav.svg" />
   <meta property="og:image" content="index_social.png" />
   <meta name="twitter:image" content="index_social.png" />
-  <title>Michael Brewer | Data Analyst | Process Optimization & Systems Thinking</title>
+  <title>Michael Brewer | Data Analyst | Python, SQL, Data Visualization, Systems Thinking</title>
   <style>
     html {
       box-sizing: border-box;
@@ -266,7 +266,8 @@
     #experience,
     #education,
     #testimonials,
-    #projects {
+    #projects,
+    #word-brewer {
       scroll-margin-top: 108px;
     }
     @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
@@ -414,6 +415,21 @@
     #projects h2 {
       color: #f1f5f9;
     }
+    #word-brewer {
+      background-image:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.88) 100%),
+        url('background5.png');
+      background-color: #1e293b;
+    }
+    #word-brewer h2,
+    #word-brewer h4,
+    #word-brewer p,
+    #word-brewer li {
+      color: #f1f5f9;
+    }
+    #word-brewer .experience-meta {
+      color: #cbd5e1;
+    }
     h2 {
       margin-bottom: 16px;
       font-size: 1.9rem;
@@ -444,7 +460,8 @@
     #about .resume-card,
     #skills .resume-card,
     #experience .resume-card,
-    #education .resume-card {
+    #education .resume-card,
+    #word-brewer .resume-card {
       background: rgba(30, 41, 59, 0.45);
       border: 1px solid rgba(148, 163, 184, 0.25);
     }
@@ -814,7 +831,7 @@
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative;">
         <div>
           <h1 style="margin: 0; font-size: 1.8rem;"><a class="site-title-link" href="index.html">Michael Brewer</a></h1>
-          <p style="margin: 4px 0 0; color: #cbd5e1;">Data Analyst | Process Optimization & Systems Thinking</p>
+          <p style="margin: 4px 0 0; color: #cbd5e1;">Data Analyst | Python, SQL, Data Visualization, Systems Thinking</p>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav>
@@ -835,9 +852,9 @@
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <h2>Data Analyst</h2>
+          <h2>Data Analyst | AI &amp; ML Apprentice</h2>
           <br>
-          <p>Currently completing an Artificial Intelligence & Machine Learning Bootcamp at TripleTen while building hands-on experience in Python, data cleaning, exploratory data analysis, statistical analysis, and model development.</p>
+          <p>Turning data into human-centered insights and better decisions through Python, SQL, data visualization, and systems thinking.</p>
         </div>
         <div class="hero-portrait">
           <img src="headshot.png" alt="Michael Brewer headshot" />
@@ -852,9 +869,9 @@
     <section id="about">
       <div class="container resume-card">
         <h2>Summary</h2>
-        <p>Previously spent 10+ years as a Content Strategist and Mindfulness Coach, developing strengths in structured thinking, clear communication, and thoughtful problem solving. These skills translate directly to data science and AI engineering through analytical rigor, stakeholder collaboration, and actionable insights.</p>
-        <p>Seeking data analytics, data operations, or related roles where I can contribute to real-world projects and continue growing my technical expertise in AI engineering.</p>
-        <p style="margin-top: 16px; color: #94a3b8; font-size: 0.95rem;">📍 Portland, Oregon, United States</p>
+        <p>Over the past decade, I have solved problems across data projects, content teams, and warehouse operations. My recent analytics work includes analyzing millions of customer transactions to uncover patterns and support better decisions, while my operations background at Amazon focused on workflow issue investigation and process optimization.</p>
+        <p>I am currently completing TripleTen's Artificial Intelligence and Machine Learning Bootcamp, where I am building practical skills in Python, SQL, statistical analysis, data visualization, and machine learning through customer behavior analysis, telecommunications analytics, and sales forecasting projects. I am interested in mission-driven organizations where data can improve systems and outcomes for real people.</p>
+        <p style="margin-top: 16px; color: #94a3b8; font-size: 0.95rem;">Portland, Oregon, United States</p>
       </div>
     </section>
 
@@ -862,20 +879,19 @@
       <div class="container resume-card">
         <h2>Top Skills</h2>
         <ul class="inline-list">
-          <li>Exploratory Data Analysis</li>
-          <li>Data Cleaning</li>
+          <li>Analytical Skills</li>
+          <li>Technical Communication</li>
+          <li>Business Reporting</li>
           <li>Python</li>
-          <li>Matplotlib</li>
-          <li>Data Visualization</li>
-          <li>Statistical Analysis</li>
+          <li>SQL</li>
           <li>Pandas</li>
           <li>NumPy</li>
-          <li>Data Merging</li>
-          <li>Statistical Hypothesis Testing</li>
-          <li>Data Transformation</li>
-          <li>Data Aggregation</li>
-          <li>Business Analytics</li>
-          <li>Data Storytelling</li>
+          <li>Scikit-learn</li>
+          <li>Data Visualization</li>
+          <li>Exploratory Data Analysis</li>
+          <li>Statistical Testing</li>
+          <li>Process Optimization</li>
+          <li>Systems Thinking</li>
         </ul>
       </div>
     </section>
@@ -884,14 +900,26 @@
       <div class="container resume-card">
         <h2>Experience</h2>
         <div class="experience-item">
-          <h4>Word Brewer — Mindfulness Coach</h4>
-          <p class="experience-meta">2019 - Present · Portland, OR</p>
+          <h4>TripleTen — Artificial Intelligence &amp; Machine Learning Apprentice</h4>
+          <p class="experience-meta">2026 - Present · Portland, OR</p>
           <ul>
-            <li>Authored a self-help book.</li>
-            <li>Founded and developed "Intellectual Yoga," an inquiry-based mindfulness practice.</li>
-            <li>Designed structured frameworks used in client sessions.</li>
-            <li>Guided clients through facilitated dialogue to analyze and reframe limiting belief systems.</li>
-            <li>Integrated breathwork techniques to support attention regulation and emotional stability.</li>
+            <li>Analyzed large datasets using Python, Pandas, NumPy, and Jupyter notebooks to identify patterns, trends, and actionable insights.</li>
+            <li>Performed exploratory data analysis, data cleaning, and statistical testing to support data-driven decision-making.</li>
+            <li>Developed SQL skills for querying relational databases, combining datasets, and extracting business insights.</li>
+            <li>Created visualizations and communicated analytical findings through reports and presentations.</li>
+            <li>Completed projects in customer behavior analysis, sales forecasting, telecommunications analytics, and retail purchasing patterns.</li>
+            <li>Applied machine learning techniques and predictive modeling concepts using Scikit-learn.</li>
+            <li>Used GitHub for version control and portfolio development while documenting analytical workflows and project outcomes.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h4>Amazon — Operations Problem Solver</h4>
+          <p class="experience-meta">2020 - 2025 · Troutdale, OR</p>
+          <ul>
+            <li>Investigated and resolved inventory discrepancies, damaged inventory cases, missing inventory, and workflow exceptions within inbound and stow operations.</li>
+            <li>Supported workflow execution across inbound, stow, pick, pack, and outbound functions as a trusted troubleshooting resource.</li>
+            <li>Provided day-to-day operational guidance and informal training to hundreds of associates over five years.</li>
           </ul>
         </div>
 
@@ -899,16 +927,16 @@
           <h4>ClearVoice — Content Strategist</h4>
           <p class="experience-meta">2015 - 2019 · Phoenix, AZ</p>
           <ul>
-            <li>Analyzed content performance metrics and SEO data to optimize engagement and drive strategic improvements.</li>
+            <li>Managed content strategy and production across teams of writers, editors, and designers.</li>
             <li>Coordinated projects between brands and creative talent to ensure timely delivery.</li>
-            <li>Conducted comprehensive research including content audits and competitor analysis to inform data-driven strategies.</li>
-            <li>Developed editorial calendars and content plans aligned with business objectives and performance metrics.</li>
-            <li>Optimized content for engagement, clarity, and search performance through iterative analysis and testing.</li>
+            <li>Conducted SEO research, content audits, and competitor analysis to inform strategy.</li>
+            <li>Developed editorial calendars and content plans aligned with business goals.</li>
+            <li>Optimized content for engagement, clarity, and search performance.</li>
           </ul>
         </div>
 
         <div class="experience-item">
-          <h4>The Arizona Republic — Online Media Intern</h4>
+          <h4>The Arizona Republic | azcentral.com | La Voz — Online Media Intern</h4>
           <p class="experience-meta">2013 - 2014 · Phoenix, Arizona, United States</p>
           <ul>
             <li>Updated and managed front-page digital content to ensure accuracy and timeliness.</li>
@@ -940,10 +968,10 @@
         <h2>Education</h2>
         <div class="education-item">
           <h4>TripleTen — Professional Certificate, Artificial Intelligence & Machine Learning</h4>
-          <p class="education-meta">January 2026 - November 2026</p>
+          <p class="education-meta">February 2026 - November 2026</p>
         </div>
         <div class="education-item">
-          <h4>Arizona State University — Bachelor's Degree, Journalism and Mass Communication</h4>
+          <h4>Arizona State University — Bachelor's Degree, Broadcast, Digital, and Print</h4>
           <p class="education-meta">2011 - 2013 · Walter Cronkite School of Journalism and Mass Communication</p>
         </div>
       </div>
@@ -1031,6 +1059,21 @@
             <a href="megaline-analysis.html" style="display: inline-block; margin-top: 16px; padding: 10px 20px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">View Project →</a>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section id="word-brewer">
+      <div class="container resume-card">
+        <h2>Organizations</h2>
+        <div class="experience-item" style="margin-bottom: 0;">
+          <h4>Word Brewer — Founder, Mindfulness Initiative</h4>
+          <p class="experience-meta">2019 - Present · Portland, OR</p>
+          <ul>
+            <li>Founded Word Brewer, a mindfulness initiative centered on intellectual yoga: a practice for stretching, balancing, and sharpening the mind.</li>
+            <li>Developed structured reflection frameworks to help people navigate complex questions and decisions.</li>
+            <li>Connected systems thinking, communication, and behavioral insight through writing and guided practice.</li>
+          </ul>
         </div>
       </div>
     </section>
