@@ -444,26 +444,27 @@
         <h1 id="contact-title">Let's Connect</h1>
         <p class="intro">Use this form to share project ideas, collaboration opportunities, or questions about my data analysis work. Required fields are marked with an asterisk.</p>
 
-        <form action="#" method="POST">
-          <input type="hidden" name="_subject" value="New portfolio contact form submission" />
-          <input type="hidden" name="_captcha" value="true" />
-          <input type="hidden" name="_next" value="contact-success.html" />
-          <input type="text" name="_honey" class="hidden-trap" tabindex="-1" autocomplete="off" />
+        <form id="contact-form" action="https://formspree.io/f/mkjrrqle" method="POST">
+          <input type="hidden" name="subject" value="New portfolio contact form submission" />
+          <input type="text" name="_gotcha" class="hidden-trap" tabindex="-1" autocomplete="off" />
 
           <div class="field-grid">
             <div class="field">
               <label for="name">Name *</label>
-              <input id="name" name="name" type="text" required autocomplete="name" />
+              <input id="name" name="name" type="text" required autocomplete="name" data-fs-field />
+              <span class="form-status error" data-fs-error="name"></span>
             </div>
 
             <div class="field">
               <label for="email">Email *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" />
+              <input id="email" name="email" type="email" required autocomplete="email" data-fs-field />
+              <span class="form-status error" data-fs-error="email"></span>
             </div>
 
             <div class="field field-full">
               <label for="message">Message *</label>
-              <textarea id="message" name="message" required></textarea>
+              <textarea id="message" name="message" required data-fs-field></textarea>
+              <span class="form-status error" data-fs-error="message"></span>
             </div>
           </div>
 
@@ -494,12 +495,12 @@
 
           <p class="required-key">* Required: name, email, and message</p>
           <p class="note">When submitted, this form is delivered to my inbox.</p>
-          <p id="form-status" class="form-status" aria-live="polite"></p>
-
           <div class="submit-row">
-            <button type="submit">Send Message</button>
+            <button type="submit" data-fs-submit-btn>Send Message</button>
           </div>
         </form>
+        <p class="form-status" data-fs-success aria-live="polite"></p>
+        <p class="form-status error" data-fs-error aria-live="polite"></p>
       </section>
     </div>
   </main>
@@ -540,15 +541,8 @@
     const phoneValue = decodeFooterValue('KDk3MSkgMjY4LTg0Nzk=');
     const mailtoPrefix = decodeFooterValue('bWFpbHRvOg==');
     const telPrefix = decodeFooterValue('dGVsOg==');
-    const formsubmitBase = decodeFooterValue('aHR0cHM6Ly9mb3Jtc3VibWl0LmNvLw==');
     const footerEmail = document.getElementById('footer-email');
     const footerPhone = document.getElementById('footer-phone');
-    const contactForm = document.querySelector('form[action="#"]');
-    const nextRedirectField = contactForm?.querySelector('input[name="_next"]');
-    const honeyField = contactForm?.querySelector('input[name="_honey"]');
-    const formStatus = document.getElementById('form-status');
-    const formStartTime = Date.now();
-    const minSubmitDelayMs = 3000;
 
     if (footerEmail && emailValue) {
       footerEmail.textContent = emailValue;
@@ -558,33 +552,6 @@
       footerPhone.textContent = phoneValue;
       footerPhone.href = `${telPrefix}${phoneValue.replace(/[^\d+]/g, '')}`;
     }
-    if (contactForm && formsubmitBase && emailValue) {
-      contactForm.action = `${formsubmitBase}${emailValue}`;
-    }
-    if (nextRedirectField) {
-      nextRedirectField.value = new URL('contact-success.html', window.location.href).href;
-    }
-    if (contactForm) {
-      contactForm.addEventListener('submit', event => {
-        const elapsedMs = Date.now() - formStartTime;
-        const isTrapFilled = Boolean(honeyField?.value.trim());
-
-        if (elapsedMs < minSubmitDelayMs || isTrapFilled) {
-          event.preventDefault();
-          if (formStatus) {
-            formStatus.textContent = 'Submission blocked. Please complete the form and try again.';
-            formStatus.classList.add('error');
-          }
-          return;
-        }
-
-        if (formStatus) {
-          formStatus.textContent = 'Sending...';
-          formStatus.classList.remove('error');
-        }
-      });
-    }
-
     const menuToggle = document.querySelector('.menu-toggle');
     const pageNav = document.querySelector('nav');
     menuToggle?.addEventListener('click', () => {
@@ -596,5 +563,12 @@
       });
     });
   </script>
+  <script>
+    window.formspree = window.formspree || function () {
+      (formspree.q = formspree.q || []).push(arguments);
+    };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mkjrrqle' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
