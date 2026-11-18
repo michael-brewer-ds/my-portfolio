@@ -6,7 +6,8 @@
   <link rel="icon" type="image/svg+xml" href="fav.svg" />
   <meta property="og:image" content="index_social.png" />
   <meta name="twitter:image" content="index_social.png" />
-  <title>Michael Brewer | Data Analyst | Python, SQL, Data Visualization, Systems Thinking, Process Optimization</title>
+  <title>Michael Brewer | Data Analyst | AI &amp; Machine Learning</title>
+  <meta name="description" content="Michael Brewer combines data analysis, AI and machine learning coursework, and operations experience to support reliable data and informed decisions in business and public service." />
   <style>
     html {
       box-sizing: border-box;
@@ -59,15 +60,53 @@
       position: relative;
       z-index: 1;
     }
+    .header-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+    }
+    .header-brand {
+      min-width: 0;
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.8rem;
+      line-height: 1.2;
+    }
+    .header-role {
+      margin: 6px 0 0;
+      color: #7dd3fc;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .header-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .header-skills li {
+      white-space: nowrap;
+    }
     nav {
       display: flex;
       gap: 20px;
       justify-content: flex-end;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
       align-items: center;
     }
     .menu-toggle {
       display: none;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       width: 46px;
@@ -347,7 +386,9 @@
         url('background2.png');
       background-color: #1e293b;
     }
-    #skills h2 {
+    #skills h2,
+    #skills h3,
+    #skills p {
       color: #f1f5f9;
     }
     #skills .inline-list li {
@@ -832,10 +873,15 @@
 <body class="parallax-enabled">
   <header>
     <div class="container">
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative;">
-        <div>
-          <h1 style="margin: 0; font-size: 1.8rem;"><a class="site-title-link" href="index.html">Michael Brewer</a></h1>
-          <p style="margin: 4px 0 0; color: #cbd5e1;">Data Analyst | Python, SQL, Data Visualization, Systems Thinking &amp; Process Optimization</p>
+      <div class="header-layout">
+        <div class="header-brand">
+          <h1 class="site-title"><a class="site-title-link" href="index.html">Michael Brewer</a></h1>
+          <p class="header-role">Data Analyst</p>
+          <ul class="header-skills" aria-label="Core skills">
+            <li>Python</li>
+            <li>SQL</li>
+            <li>AI &amp; Machine Learning</li>
+          </ul>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav>
@@ -856,9 +902,8 @@
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <h2>Data Analyst | Python, SQL, Data Visualization</h2>
-          <br>
-          <p>Turning data into human-centered insights and better decisions through Python, SQL, data visualization, systems thinking, and process optimization.</p>
+          <h2>Reliable data. Better decisions.</h2>
+          <p>I combine Python, SQL, and AI &amp; machine learning training with experience in operations and communication. My focus is connecting analysis to real-world conditions so organizations can make informed, responsible decisions.</p>
         </div>
         <div class="hero-portrait">
           <img src="headshot.png" alt="Michael Brewer headshot" />
@@ -873,30 +918,43 @@
     <section id="about">
       <div class="container resume-card">
         <h2>Summary</h2>
-        <p>Over the past decade, I have solved problems across data projects, content teams, and warehouse operations. My recent analytics work has involved analyzing millions of customer transactions to uncover patterns and support better decisions, while my operations work at Amazon focused on resolving workflow issues and improving operational efficiency.</p>
-        <p>What ties these experiences together is a fascination with the problems that nobody else seems to notice. Today, that path has led me into data science through TripleTen's Artificial Intelligence and Machine Learning Bootcamp, where I am developing practical skills in Python, SQL, statistical analysis, data visualization, and machine learning. I am interested in mission-driven organizations where I can apply systems thinking and analytical problem-solving to create meaningful, human-centered outcomes through data.</p>
+        <p>I bring experience in operations, content strategy, and journalism to data analysis and AI. At Amazon, I investigated inventory discrepancies and workflow exceptions, helped introduce new processes, and supported associates across fulfillment operations. That experience taught me to look closely at how processes work in practice and to ask what the numbers might be missing. My communications background helps me explain findings clearly to different audiences.</p>
+        <p>Through TripleTen's Artificial Intelligence and Machine Learning program, my coursework extends from Python, SQL, and statistics to feature engineering, deep learning, computer vision, natural language processing, and cloud tools. The featured projects currently demonstrate my work in data cleaning, exploratory analysis, visualization, and hypothesis testing.</p>
+        <p>I am interested in opportunities across data analytics, data quality, and applied AI in private and public organizations. My particular direction is responsible AI and algorithm auditing: examining whether data represents the people and conditions it is meant to describe, whether measures reflect their intended purpose, and how model results hold up in practice. I want to help teams connect technical findings with feedback from the people who use or are affected by these systems.</p>
         <p style="margin-top: 16px; color: #94a3b8; font-size: 0.95rem;">Portland, Oregon, United States</p>
       </div>
     </section>
 
     <section id="skills">
       <div class="container resume-card">
-        <h2>Top Skills</h2>
+        <h2>Core Skills</h2>
         <ul class="inline-list">
-          <li>Analytical Skills</li>
-          <li>Technical Communication</li>
-          <li>Business Reporting</li>
           <li>Python</li>
           <li>SQL</li>
+          <li>Data Cleaning</li>
           <li>Pandas</li>
           <li>NumPy</li>
-          <li>Scikit-learn</li>
           <li>Data Visualization</li>
           <li>Exploratory Data Analysis</li>
           <li>Statistical Testing</li>
           <li>Process Optimization</li>
           <li>Systems Thinking</li>
+          <li>Technical Communication</li>
+          <li>Business Reporting</li>
         </ul>
+        <h3>AI &amp; Machine Learning Coursework</h3>
+        <ul class="inline-list" aria-label="AI and machine learning coursework topics">
+          <li>Machine Learning</li>
+          <li>Feature Engineering</li>
+          <li>Scikit-learn</li>
+          <li>Neural Networks &amp; Deep Learning</li>
+          <li>Computer Vision</li>
+          <li>Natural Language Processing</li>
+          <li>APIs &amp; Web Services</li>
+          <li>Docker &amp; Containerization</li>
+          <li>AWS for Machine Learning</li>
+        </ul>
+        <p>These topics reflect my coursework. Current and upcoming studies include large language models, generative AI, MLOps, production systems, and a capstone project.</p>
       </div>
     </section>
 
@@ -958,17 +1016,16 @@
       <div class="container resume-card">
         <h2>Education</h2>
         <div class="education-item">
-          <h4>TripleTen — Professional Certificate, Artificial Intelligence & Machine Learning</h4>
-          <p class="education-meta">February 2026 - November 2026</p>
+          <h4>TripleTen — Artificial Intelligence &amp; Machine Learning Program</h4>
+          <p class="education-meta">February 2026 - Present · In progress</p>
+          <p>Completed coursework includes:</p>
           <ul>
-            <li>Analyzed large datasets using Python, Pandas, NumPy, and Jupyter notebooks to identify patterns, trends, and actionable insights.</li>
-            <li>Performed exploratory data analysis, data cleaning, and statistical testing to support data-driven decision-making.</li>
-            <li>Developed SQL skills for querying relational databases, combining datasets, and extracting business insights.</li>
-            <li>Created visualizations and communicated analytical findings through reports and presentations.</li>
-            <li>Completed projects in customer behavior analysis, sales forecasting, telecommunications analytics, and retail purchasing patterns.</li>
-            <li>Applied machine learning techniques and predictive modeling concepts using Scikit-learn.</li>
-            <li>Used GitHub for version control and portfolio development while documenting analytical workflows and project outcomes.</li>
+            <li><strong>Data foundations:</strong> Basic Python, working with data in Python, exploratory data analysis, statistical data analysis, and data collection and storage with SQL.</li>
+            <li><strong>Machine learning:</strong> Introduction to machine learning, feature engineering, neural networks and deep learning, computer vision, and natural language processing.</li>
+            <li><strong>Development and infrastructure:</strong> Software development tools, APIs and web services, Docker and containerization, and AWS for machine learning.</li>
+            <li><strong>Project work:</strong> Video game sales forecasting, with additional featured analyses of retail purchasing patterns and telecommunications plans.</li>
           </ul>
+          <p><strong>Current and upcoming:</strong> Large language models and generative AI, MLOps and production systems, and the capstone project.</p>
         </div>
         <div class="education-item">
           <h4>Arizona State University — Bachelor's Degree, Broadcast, Digital, and Print</h4>
@@ -1027,11 +1084,12 @@
     <section id="projects">
       <div class="container resume-card">
         <h2>Featured Projects</h2>
+        <p>Analytics projects completed through TripleTen, with an emphasis on data preparation, statistical reasoning, and clear recommendations.</p>
         <div class="projects-grid" style="display: grid; gap: 32px; margin-top: 32px;">
 
           <div style="border: 1px solid rgba(226, 232, 240, 0.4); border-radius: 12px; padding: 28px; background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);">
             <h3 style="color: #bfdbfe; margin-top: 0; font-size: 1.3rem;">Video Game Sales Forecasting Analysis</h3>
-            <p style="color: #cbd5e1; margin: 12px 0;">End-to-end analysis of video game sales data to identify winning platform, genre, and regional patterns for 2017 planning. Combined data cleaning, platform lifecycle analysis, regional market profiling, and hypothesis testing to translate historical sales into strategy-ready recommendations.</p>
+            <p style="color: #cbd5e1; margin: 12px 0;">Analyzed historical video game sales to inform 2017 campaign planning. Cleaned missing and inconsistent values, compared platform lifecycles and regional demand, and tested rating hypotheses. The analysis highlights why the time period and market context matter when interpreting results.</p>
             <p style="color: #94a3b8; font-size: 0.95rem; margin: 12px 0;"><strong>Technologies:</strong> Python, Pandas, NumPy, SciPy, Matplotlib, Seaborn, Exploratory Data Analysis, Hypothesis Testing</p>
             <a href="video-game-sales-analysis.html" aria-label="View Video Game Sales Forecasting Analysis project" style="display: block; margin: 0 0 18px;">
               <img src="video-game-sales-analysis-images/vg_sales_social.png" alt="Video Game Sales Forecasting Analysis social preview" loading="lazy" style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(191, 219, 254, 0.25);" />
@@ -1041,7 +1099,7 @@
           
           <div style="border: 1px solid rgba(226, 232, 240, 0.4); border-radius: 12px; padding: 28px; background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);">
             <h3 style="color: #bfdbfe; margin-top: 0; font-size: 1.3rem;">Instacart Market Basket Analysis</h3>
-            <p style="color: #cbd5e1; margin: 12px 0;">Comprehensive exploratory data analysis of 3 million Instacart orders, uncovering customer purchasing patterns, basket composition, and reorder behavior. Delivered actionable insights for merchandising strategies, recommendation systems, and operational planning.</p>
+            <p style="color: #cbd5e1; margin: 12px 0;">Explored a large Instacart dataset to understand purchasing patterns, basket size, and reorder behavior. Handled missing values and duplicates, combined related tables, and translated findings into recommendations for merchandising and operational planning.</p>
             <p style="color: #94a3b8; font-size: 0.95rem; margin: 12px 0;"><strong>Technologies:</strong> Python, Pandas, Matplotlib, Data Visualization, Exploratory Data Analysis</p>
             <a href="instacart-analysis.html" aria-label="View Instacart Market Basket Analysis project" style="display: block; margin: 0 0 18px;">
               <img src="instacart_social.png" alt="Instacart Market Basket Analysis social preview" loading="lazy" style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(191, 219, 254, 0.25);" />
@@ -1051,7 +1109,7 @@
 
           <div style="border: 1px solid rgba(226, 232, 240, 0.4); border-radius: 12px; padding: 28px; background: linear-gradient(100deg, rgba(2, 6, 23, 0.74) 0%, rgba(15, 23, 42, 0.66) 58%, rgba(15, 23, 42, 0.5) 100%);">
             <h3 style="color: #bfdbfe; margin-top: 0; font-size: 1.3rem;">Megaline Statistical Analysis</h3>
-            <p style="color: #cbd5e1; margin: 12px 0;">Applied statistical hypothesis testing to analyze telecom plan performance and revenue generation, providing data-driven recommendations for marketing budget allocation. Demonstrated expertise in translating statistical analysis into actionable business strategy.</p>
+            <p style="color: #cbd5e1; margin: 12px 0;">Compared two telecom plans using simulated customer data, monthly usage summaries, and statistical hypothesis tests. Explained revenue differences and proposed marketing priorities, connecting the analysis to a concrete business decision.</p>
             <p style="color: #94a3b8; font-size: 0.95rem; margin: 12px 0;"><strong>Technologies:</strong> Python, Pandas, SciPy, Statistical Analysis, Hypothesis Testing, Business Analytics</p>
             <a href="megaline-analysis.html" aria-label="View Megaline Statistical Analysis project" style="display: block; margin: 0 0 18px;">
               <img src="megaline_social.png" alt="Megaline Statistical Analysis social preview" loading="lazy" style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid rgba(191, 219, 254, 0.25);" />

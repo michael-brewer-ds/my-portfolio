@@ -58,11 +58,49 @@
       width: min(1100px, 90%);
       margin: 0 auto;
     }
+    .header-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      padding: 14px 0;
+    }
+    .header-brand {
+      min-width: 0;
+    }
+    .site-title {
+      margin: 0;
+      font-size: 1.8rem;
+      line-height: 1.2;
+    }
+    .header-role {
+      margin: 6px 0 0;
+      color: #7dd3fc;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .header-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .header-skills li {
+      white-space: nowrap;
+    }
     nav {
       display: flex;
       gap: 20px;
       justify-content: flex-end;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
       align-items: center;
     }
     nav a {
@@ -81,6 +119,7 @@
     }
     .menu-toggle {
       display: none;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       width: 46px;
@@ -366,19 +405,7 @@
       opacity: 0;
       pointer-events: none;
     }
-    @media (max-width: 760px) {
-      body {
-        background-attachment: scroll, scroll, scroll, scroll;
-      }
-      .contact-shell {
-        padding: 22px;
-      }
-      .field-grid {
-        grid-template-columns: 1fr;
-      }
-      .field-full {
-        grid-column: 1;
-      }
+    @media (max-width: 860px) {
       .menu-toggle {
         display: inline-flex;
       }
@@ -406,6 +433,20 @@
         text-align: center;
         padding: 10px 0;
       }
+    }
+    @media (max-width: 760px) {
+      body {
+        background-attachment: scroll, scroll, scroll, scroll;
+      }
+      .contact-shell {
+        padding: 22px;
+      }
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+      .field-full {
+        grid-column: 1;
+      }
       .site-footer-contact {
         flex-direction: column;
         gap: 8px;
@@ -421,10 +462,15 @@
   <header>
   <link rel="icon" type="image/svg+xml" href="fav.svg" />
     <div class="header-container">
-      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; padding: 14px 0;">
-        <div>
-          <h1 style="margin: 0; font-size: 1.8rem;"><a class="site-title-link" href="index.html">Michael Brewer</a></h1>
-          <p style="margin: 4px 0 0; color: #cbd5e1;">Aspiring Data Scientist | Artificial Intelligence & Machine Learning Student</p>
+      <div class="header-layout">
+        <div class="header-brand">
+          <h1 class="site-title"><a class="site-title-link" href="index.html">Michael Brewer</a></h1>
+          <p class="header-role">Data Analyst</p>
+          <ul class="header-skills" aria-label="Core skills">
+            <li>Python</li>
+            <li>SQL</li>
+            <li>AI &amp; Machine Learning</li>
+          </ul>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav>
@@ -442,7 +488,7 @@
     <div class="container">
       <section class="contact-shell" aria-labelledby="contact-title">
         <h1 id="contact-title">Let's Connect</h1>
-        <p class="intro">Use this form to share project ideas, collaboration opportunities, or questions about my data analysis work. Required fields are marked with an asterisk.</p>
+        <p class="intro">Get in touch about opportunities in data analytics, data quality, or applied AI across private and public organizations. I am particularly interested in contributing to responsible AI and algorithm auditing teams. Required fields are marked with an asterisk.</p>
 
         <form id="contact-form" action="https://formspree.io/f/mkjrrqle" method="POST">
           <input type="hidden" name="subject" value="New portfolio contact form submission" />
